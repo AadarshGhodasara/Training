@@ -52,7 +52,7 @@ class Form extends React.Component{
     render(){
         return(
             <div style={{width:"100%"}}>
-                <h1 className="header">Registration Form</h1>
+                {/* <h1 className="header">Registration Form</h1> */}
                 <form>
                 <table className="formTag">
                     <tbody>

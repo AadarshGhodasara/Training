@@ -6,7 +6,7 @@ import '../Css/showData.css';
 function Profile(props) {
   return(
     <div>
-      <h1>Profile Details</h1>
+      {/* <h1>Profile Details</h1> */}
       { (props.data === 0) ? 
       <div className="errorOutterTag">
           <div className="errorTag">
