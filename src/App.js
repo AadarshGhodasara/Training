@@ -1,24 +1,22 @@
 import React from 'react';
 import './App.css';
-// import Home from './js/Home';
-import About from './js/HookExample';
-import Profile from './js/Profile';
-import Form from './js/Form';
-import Login from './js/Login';
-import SignUp from './js/SignUp';
+import About from './Pages/HookExample/HookExample';
+import Profile from './Pages/Profile/Profile';
+import Form from './Pages/Form/Form';
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/SignUp/SignUp';
 import {
   Router,
   Switch,
   Route,
-  // Link
 } from "react-router-dom";
+import Home from './Pages/Home/Home';
 import { createStore  } from 'redux';
-// import thunk from 'redux-thunk';
-import history from './js/history';
-
+import history from './Components/history';
 import { Provider } from 'react-redux';
 import reducer from './reducer/reducer';
-// import Sidebar from './js/SideBar';
+
+
 const  store = createStore(reducer);
 
 // console.log(store.getState());
@@ -60,7 +58,10 @@ class App extends React.Component{
           </div> */}
         <Switch>
           <Route exact path="/">
-            <Login />
+              <Login  />
+          </Route>
+          <Route path="/home">
+            <Home />
           </Route>
           <Route path="/SignUp">
             <SignUp />

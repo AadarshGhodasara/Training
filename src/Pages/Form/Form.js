@@ -1,7 +1,7 @@
 import React from 'react';
-import  '../Css/Form.css';
-import {setDataState} from '../reducer/reducer';
-
+import  './Form.css';
+import {setDataState} from '../../reducer/reducer';
+import Header from '../../Components/Header/header';
 
 
 class Form extends React.Component{
@@ -52,7 +52,7 @@ class Form extends React.Component{
     render(){
         return(
             <div style={{width:"100%"}}>
-                {/* <h1 className="header">Registration Form</h1> */}
+                <Header text='Registration Form' />
                 <form>
                 <table className="formTag">
                     <tbody>

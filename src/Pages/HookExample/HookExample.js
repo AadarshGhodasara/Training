@@ -1,10 +1,11 @@
 import React, { useState , useEffect }  from 'react';
 // import '../Css/Form.css';
-import '../Css/HookExample.css';
-import useDropDown from './useDropDown';
-import CityName from '../json/StateAndCity.json';
-import StateName from '../json/State.json';
+import './HookExample.css';
+import useDropDown from '../../Components/useDropDown';
+import CityName from '../../json/StateAndCity.json';
+import StateName from '../../json/State.json';
 import pet,{ANIMALS} from '@frontendmasters/pet';
+import Header from '../../Components/Header/header';
 
 const HookExample = () => {
     const LOCATION = ['Morbi','Rajkot','Ahmedabad','Vadodara','Surat','Gandhinagar']
@@ -38,6 +39,7 @@ const HookExample = () => {
 
     return (
       <div>
+        <Header text='React Hook' />
         <h1>Hook Example</h1>
         <div className="hookInnerBox">
           <div className="hookoutterBox">

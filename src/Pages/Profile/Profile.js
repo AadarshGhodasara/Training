@@ -1,11 +1,13 @@
 import React from 'react';
-import '../Css/Form.css';
+// import '../Css/Form.css';
 import { connect } from 'react-redux';
-import '../Css/showData.css';
+import './showData.css';
+import Header from '../../Components/Header/header';
 
 function Profile(props) {
   return(
     <div>
+      <Header text='Profile' />
       {/* <h1>Profile Details</h1> */}
       { (props.data === 0) ? 
       <div className="errorOutterTag">

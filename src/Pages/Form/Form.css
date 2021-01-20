@@ -1,11 +1,7 @@
-/* .body{
-    margin: 0;
-    background-color: red;
-} */
+
 body{
     background-color: cadetblue;
     border: 0; 
-    
   }
 .header{
     padding:0px;
@@ -20,12 +16,8 @@ form{
     align-items: center;
     height: 55vh;
     width: 100%;
-    /* background-color: red; */
 }
 .formTag{
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* width: 30%; */
     height: 35vh;
     background-color: darkgray;
     border-radius: 10px;
@@ -36,9 +28,6 @@ form{
 
 }
 label{
-    /* background-color: blue; */
-    /* padding: 10px; */
-    /* margin: 1%; */
     font-size: calc(8px + 2vmin);
 }
 
@@ -49,8 +38,12 @@ label{
 input[type=text],
 input[type=number],
 input[type=email]{
-    border-radius: 10px;
+    width: 97%;
+    border-radius: 5px;
     height: 3vh;
+    padding: 4px;
+    margin-top: 2%;
+    font-size: calc(3px + 2vmin);
 }
 
 input[type="radio"]{

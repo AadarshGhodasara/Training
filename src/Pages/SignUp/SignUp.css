@@ -3,25 +3,24 @@
     width: 100%;
     color: white;
 }
-.tabelOutterTag{
-    /* width: 100%; */
-    /* background-color: red; */
+.signUpOutterTag{
+    /* background-color: brown; */
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 80vh;
-    /* margin-top: 3%; */
+    justify-content: center;
+    height: 82vh;
 }
-.tabelTag{
+.SignUptabelTag{
     background-color: blueviolet;
     box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     -webkit-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     border-radius: 10px;
-    height: 45vh;
+    height: 65vh;
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 35%;
 }
 .form-header{
     margin-top: 3%;
@@ -54,7 +53,7 @@ input[type=text],input[type=password]{
     margin-top: 2%;
     font-size: calc(3px + 2vmin);
 }
-input[type=Submit]{
+input[type=button]{
     width: 100%;
     border-radius: 5px;
     padding: 4px;
@@ -72,29 +71,35 @@ input[type=Submit]{
     font-size: calc(7px + 1vmin);
 }
 @media screen and (min-width: 600px) {
-    .tabelTag{
-        width: 60%;
-        height: 45vh;
+    .SignUptabelTag{
+        width: 50%;
+        height: 65vh;
     }
 
 }
 @media screen and (min-width: 900px) {
-    .tabelTag{
-        width: 40%;
-        height: 45vh;
+    .SignUptabelTag{
+        width: 45%;
+        height: 65vh;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .SignUptabelTag{
+        width: 35%;
+        height: 65vh;
     }
 }
 @media screen and (min-width: 1200px) {
-    .tabelTag{
-        width: 30%;
-        height: 45vh;
+    .SignUptabelTag{
+        width: 35%;
+        height: 70vh;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .tabelTag{
+    .SignUptabelTag{
         width: 80%;
-        height: 45vh;
+        height: 65vh;
     }
     .form-header{
         height: 6vh;
@@ -115,7 +120,7 @@ input[type=Submit]{
         font-size: calc(10px + 2vmin);
         margin-top: 2%;
     }
-    input[type=Submit]{
+    input[type=button]{
         border-radius: 2px;
         height: 5vh;
         margin-top: 5%;
@@ -129,9 +134,4 @@ input[type=Submit]{
         margin: 3% 8% 0% 8%;  
         /* background-color: blue; */
     }
-  }
-
-  a{
-      color: black;
-      text-decoration: none;
   }

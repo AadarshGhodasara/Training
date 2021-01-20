@@ -1,26 +1,29 @@
 .Login-header{
     background-color: black;
-    width: 100%;
-    color: white;
-}
-.signUpOutterTag{
-    /* background-color: brown; */
-
     display: flex;
+    height: 12vh;
     align-items: center;
-    justify-content: center;
-    height: 82vh;
+    justify-content: space-around;
 }
-.SignUptabelTag{
+.tabelOutterTag{
+    /* width: 100%; */
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    /* margin-top: 3%; */
+}
+.tabelTag{
     background-color: blueviolet;
     box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     -webkit-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
     border-radius: 10px;
-    height: 65vh;
+    height: 45vh;
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 30%;
 }
 .form-header{
     margin-top: 3%;
@@ -71,35 +74,29 @@ input[type=Submit]{
     font-size: calc(7px + 1vmin);
 }
 @media screen and (min-width: 600px) {
-    .SignUptabelTag{
-        width: 50%;
-        height: 65vh;
+    .tabelTag{
+        width: 60%;
+        height: 45vh;
     }
 
 }
 @media screen and (min-width: 900px) {
-    .SignUptabelTag{
-        width: 45%;
-        height: 65vh;
-    }
-}
-@media screen and (min-width: 1024px) {
-    .SignUptabelTag{
-        width: 35%;
-        height: 65vh;
+    .tabelTag{
+        width: 40%;
+        height: 45vh;
     }
 }
 @media screen and (min-width: 1200px) {
-    .SignUptabelTag{
-        width: 35%;
-        height: 70vh;
+    .tabelTag{
+        width: 30%;
+        height: 45vh;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .SignUptabelTag{
+    .tabelTag{
         width: 80%;
-        height: 65vh;
+        height: 45vh;
     }
     .form-header{
         height: 6vh;
@@ -134,4 +131,9 @@ input[type=Submit]{
         margin: 3% 8% 0% 8%;  
         /* background-color: blue; */
     }
+  }
+
+ .sign-up-btn-css{
+      color: black;
+      text-decoration: none;
   }

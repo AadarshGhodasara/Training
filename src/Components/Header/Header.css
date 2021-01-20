@@ -1,0 +1,68 @@
+.menu{
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .menuItem{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  
+  
+.h3{
+    color: brown;
+    margin-right: 6%;
+    font-size: x-large;
+  }
+  
+  .firstTag{
+    width:33%;
+  }
+  .header-Tag{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15vh;  
+  }
+  
+  .header-Text{
+    color: white;
+    font-size: xx-large;
+  }
+
+  .logOut-text{
+      background-color: black;
+      color: #551A8b;
+      text-decoration: underline;
+  }
+  @media screen and (max-width: 760px) {
+    .firstTag{
+        width:20%;
+        background-color:black;
+    }
+    .menuItem{
+        display: none;
+    }
+    .header-Tag{
+        width: 60%;
+    }
+    .last-tag{
+        width:20%;
+    }
+  }
+  @media screen and (min-width: 900px) {
+    .last-tag{
+        display: none;
+    }
+    .firstTag{
+        display: none;
+    }
+    .additional-tag{
+        width: 33%;   
+    }
+  }

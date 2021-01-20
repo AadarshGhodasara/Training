@@ -1,26 +1,35 @@
 import React  from 'react';
-import '../Css/Login.css'; 
-// import { useHistory } from "react-router-dom";
+import './Login.css'; 
+import fire from '../../Components/firebase';
+import history from '../../Components/history';
 
 
 class Login extends React.Component {
     constructor(props){
-        // const history = useHistory();
         super(props);
         this.state = {
             email:'',
             password:''
         }
+        this.submitLogin = this.submitLogin.bind(this)
     }
     
-    submitLogin = () => {
-        console.log('email -> ',this.state.email);
-        console.log('email -> ',this.state.password);
+    submitLogin(){
+
+        fire.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
+        .then(
+            async function(){
+                var user = fire.auth().currentUser;
+                if(user.emailVerified === false){
+                    alert('Email Not Verified...')
+                }else{
+                    alert('Successful Login...')
+                    history.push({pathname:'/home'});
+                }
+            }
+        )
+        .catch((error) => alert(error.message))
         
-        console.log('IN');
-        window.location.href='/Profile'
-        // history.push('/Profile');
-        // return <Redirect  to="/Profile" />
     }
     render(){
         return(
@@ -44,7 +53,7 @@ class Login extends React.Component {
                         <input type="Submit" onClick={this.submitLogin}  />
                     </div>
                     <div className='signUpLabelTag'>
-                        <label className='signUpLabel'>Not a Member ? <a href='/SignUp'><strong>Sign Up</strong> </a> Now </label>
+                        <label className='signUpLabel'>Not a Member ? <a href='/SignUp' className='sign-up-btn-css'><strong>Sign Up</strong> </a> Now </label>
                     </div>
 
                     {/* <label>Last Name:</label>
@@ -56,5 +65,8 @@ class Login extends React.Component {
     }
 
 }
+
+
+
 
 export default Login;

@@ -1,27 +1,10 @@
 import React  from 'react';
-import '../Css/SignUp.css'; 
-import  firebase from "firebase"; 
-
-
-var firebaseConfig = {
-    apiKey: "AIzaSyDB-9gDavlUpDwNrpP3YN1gPazFS1bZqQM",
-    authDomain: "react-js-web-31093.firebaseapp.com",
-    databaseURL: "https://react-js-web-31093-default-rtdb.firebaseio.com/",
-    projectId: "react-js-web-31093",
-    storageBucket: "react-js-web-31093.appspot.com",
-    messagingSenderId: "1087500234803",
-    appId: "1:1087500234803:web:8adcc489c200dfe1ab3346",
-    measurementId: "G-KY1ST75J3D"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+import './SignUp.css'; 
+import fire from '../../Components/firebase';
+import history from '../../Components/history';
 
 class SignUp extends React.Component {
     constructor(props){
-        // const history = useHistory();
         super(props);
         this.state = {
             email:'',
@@ -29,29 +12,43 @@ class SignUp extends React.Component {
             Name:'',
             Confirm_password:'',
         }
+        this.submitLogin = this.submitLogin.bind(this);
     }
-    
-    submitLogin = (e) => {
-        console.log('email -> ',this.state.email);
-        console.log('email -> ',this.state.password);
+
+
+    submitLogin(e){
         if( !(this.state.password === this.state.Confirm_password) ){
             alert('Password Not Match...');
             this.setState({Confirm_password:''});
         }else{
-            e.preventDefault();
-            firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)
+            const email = this.state.email;
+            const pass = this.state.password;
+            fire.auth().createUserWithEmailAndPassword(email,pass)
             .then(
-                console.log('e ===> ',e)
+            async function () {
+                var user = fire.auth().currentUser;
+                user.sendEmailVerification().then(function() {
+                    fire.database().ref('Users/'+user.uid).set({
+                        name : this.state.Name,
+                        Email : this.state.email 
+                      }).then((data)=>{
+                          //success callback
+                        console.log('Sign Up Successful And Verification Link Sent In Your Email...')
+                        this.setState({Confirm_password:'',password:'',Name:'',email:''});
+                        history.push({ 
+                            pathname: '/',
+                            state: this.state
+                        });
+                      }).catch((error)=>{
+                          console.log('error ' , error.message)
+                      })
+                  }.bind(this)).catch(function(error) {
+                    console.log(error.message)
+                  });
+            }.bind(this)
             )
-            .catch((error) => {
-                console.log('Error ===> ',error);
-            });
-          
-            alert('Submit_Data');
-            this.setState({Confirm_password:'',password:'',Name:'',email:''});
-            window.location.href='/';
+            .catch((error) => alert(error.message))
         }
-        // window.location.href='/Profile'
     }
     render(){
         return(
@@ -80,14 +77,11 @@ class SignUp extends React.Component {
                         <input type="password" onChange={(e) => this.setState({Confirm_password:e.target.value})}  value={this.state.Confirm_password} />
                     </div>
                     <div className='inputTag'>
-                        <input type="Submit" onClick={this.submitLogin}  />
+                     <input type="button" value='Submit'   onClick={this.submitLogin}  />
                     </div>
                     <div className='signUpLabelTag'>
                         <label className='signUpLabel'>Already Signed Up ? Go To <a href='/' className='a'><strong>Login</strong></a></label>
                     </div>
-
-                    {/* <label>Last Name:</label>
-                    <input type="text"  onChange={this.lastNameChangeEvent} />                         */}
                 </div>
             </div>
             </div>
