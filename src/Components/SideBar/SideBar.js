@@ -18,6 +18,12 @@ import history from '../history';
       <a className="menu-item" href="/Form">
         Form
       </a>
+      <a className="menu-item" href="/AddPhoto">
+      Add Photo
+      </a>
+      <a className="menu-item" href="/ShowImages">
+      Show Images
+      </a>
       {/* <a className="menu-item" href="/Form">
         Logout
       </a> */}

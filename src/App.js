@@ -15,7 +15,9 @@ import { createStore  } from 'redux';
 import history from './Components/history';
 import { Provider } from 'react-redux';
 import reducer from './reducer/reducer';
-
+import CheckUserStatus from './Components/checkUserStatus/UserStatus';
+import AddPhoto from './Pages/addPhoto/AddPhoto';
+import ShowImages from './Pages/showImages/showImages';
 
 const  store = createStore(reducer);
 
@@ -58,6 +60,9 @@ class App extends React.Component{
           </div> */}
         <Switch>
           <Route exact path="/">
+              <CheckUserStatus  />
+          </Route>
+          <Route  path="/login">
               <Login  />
           </Route>
           <Route path="/home">
@@ -77,7 +82,12 @@ class App extends React.Component{
           <Route path="/Form">
             <Form />
           </Route>
-
+          <Route path="/AddPhoto">
+            <AddPhoto />
+          </Route>
+          <Route path="/ShowImages">
+            <ShowImages />
+          </Route>
         </Switch>
       </Router>
       </div>
