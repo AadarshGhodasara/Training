@@ -1,5 +1,5 @@
 import React from 'react';
-import fire from '../firebase';
+import firebase from '../firebase';
 import history from '../history';
 import Loader from '../Loader';
 import './checkUserStatus.css';
@@ -11,7 +11,9 @@ class UserStatus extends React.Component {
     }
     CheckUserStatus(){
         console.log('check user');
-        fire.auth().onAuthStateChanged(function(user) {
+        // history.push({pathname:'/home'})
+        console.log(firebase);
+        firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.
               history.push({pathname:'/home'})

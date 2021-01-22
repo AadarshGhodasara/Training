@@ -12,11 +12,10 @@ class SignUp extends React.Component {
             Name:'',
             Confirm_password:'',
         }
-        this.submitLogin = this.submitLogin.bind(this);
     }
 
 
-    submitLogin(e){
+    submitLogin = (e) =>{
         if( !(this.state.password === this.state.Confirm_password) ){
             alert('Password Not Match...');
             this.setState({Confirm_password:''});
@@ -36,14 +35,14 @@ class SignUp extends React.Component {
                         console.log('Sign Up Successful And Verification Link Sent In Your Email...')
                         this.setState({Confirm_password:'',password:'',Name:'',email:''});
                         history.push({ 
-                            pathname: '/',
+                            pathname: '/login',
                             state: this.state
                         });
                       }).catch((error)=>{
-                          console.log('error ' , error.message)
+                          console.log('error ' , error)
                       })
                   }.bind(this)).catch(function(error) {
-                    console.log(error.message)
+                    console.log(error)
                   });
             }.bind(this)
             )

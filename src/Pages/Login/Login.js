@@ -2,7 +2,7 @@ import React  from 'react';
 import './Login.css'; 
 import fire from '../../Components/firebase';
 import history from '../../Components/history';
-
+// import Background from '../../../public/login_bg.png';
 
 class Login extends React.Component {
     constructor(props){
@@ -21,15 +21,14 @@ class Login extends React.Component {
             async function(){
                 var user = fire.auth().currentUser;
                 if(user.emailVerified === false){
-                    alert('Email Not Verified...')
+                    alert('Email Not Verified...');
                 }else{
-                    alert('Successful Login...')
+                    alert('Successful Login...');
                     history.push({pathname:'/home'});
                 }
             }
         )
         .catch((error) => alert(error.message))
-        
     }
     render(){
         return(

@@ -27,30 +27,19 @@
     -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
 
 }
+
 .upload-btn{
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    height: 5vh;
-    width: 50%;
-    /* margin-top: 3%; */
-    border-radius: 5px;
-    background-color: #921D94;
-    box-shadow: -3px -4px 24px -8px rgba(0,0,0,0.75);
-    -webkit-box-shadow: -3px -4px 24px -8px rgba(0,0,0,0.75);
-    -moz-box-shadow: -3px -4px 24px -8px rgba(0,0,0,0.75);    
-}
-.upload-btn-text{
-    font-size: calc(10px + 1vmin);
+    width: 40%;
+    /* background-color: red; */
+    /* height: 6vh; */
 }
 
-.upload-btn :hover{
-    /* background-color: #964D97; */
-}
+
 
 .img-tag{
-    width: 90%;
-    height: 30vh;
+    width: 100%;
+    height: 40vh;
+    border-radius: 10px;
 }
 .btn-tag{
     margin: 2%;
@@ -68,6 +57,7 @@
         width: 50%;
         height: 50vh;
     }
+
 }
 @media screen and (min-width: 900px) {
     .upload-img-tag{
@@ -86,6 +76,9 @@
     .upload-img-tag{
         width: 70%;
         height: 45vh;
+    }
+    .addPhoto-outter-tag{
+        height: 70vh;
     }
 
   }

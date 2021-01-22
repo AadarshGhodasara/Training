@@ -1,6 +1,7 @@
 import  { useEffect , useState } from 'react';
 import { store } from '../firebase';
 
+export var isLoading= 1;
 const useStore = (collection) => {
 
     const [docs , setdocs] = useState([]);
@@ -13,10 +14,10 @@ const useStore = (collection) => {
             snap.forEach(doc => {
                 document.push({...doc.data(), id : doc.id})
             });
-            setdocs(document);
+            setdocs(document); 
         })
-
-        return () => unsub();
+        isLoading=null;
+        return () =>  unsub();
     },[collection]);
 
     return {docs};
