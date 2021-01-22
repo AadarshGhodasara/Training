@@ -1,0 +1,137 @@
+.Login-header{
+    background-color: black;
+    width: 100%;
+    color: white;
+}
+.signUpOutterTag{
+    /* background-color: brown; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 82vh;
+}
+.SignUptabelTag{
+    background-color: blueviolet;
+    box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -webkit-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    -moz-box-shadow: 0px 3px 117px 12px rgba(0,0,0,0.32) inset;
+    border-radius: 10px;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+.form-header{
+    margin-top: 3%;
+    width: 100%;
+    text-align: center;
+    font-size: calc(10px + 3vmin);
+    /* background-color: brown; */
+}
+.inputTag{
+    margin: 3% 8% 0% 8%;    
+    /* margin: 10%; */
+    display: flex;
+    /* width: 80; */
+    align-items: flex-start;
+    flex-direction: column;
+    /* background-color: blue; */
+}
+.inputTagLabel{
+    /* font-size: calc(8px + 2vmin); */
+    width: 100%;
+    font-size: calc(12px + 1vmin);
+    text-align: left;
+    /* background-color: aquamarine; */
+}
+input[type=text],input[type=password]{
+    width: 97%;
+    border-radius: 5px;
+    height: 3vh;
+    padding: 4px;
+    margin-top: 2%;
+    font-size: calc(3px + 2vmin);
+}
+input[type=button]{
+    width: 100%;
+    border-radius: 5px;
+    padding: 4px;
+    height: 5vh;
+    margin-top: 2%;
+    font-size: calc(3px + 2vmin);
+}
+.signUpLabelTag{
+    margin: 5% 8% 0% 8%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signUpLabel{
+    font-size: calc(7px + 1vmin);
+}
+@media screen and (min-width: 600px) {
+    .SignUptabelTag{
+        width: 50%;
+        height: 65vh;
+    }
+
+}
+@media screen and (min-width: 900px) {
+    .SignUptabelTag{
+        width: 45%;
+        height: 65vh;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .SignUptabelTag{
+        width: 35%;
+        height: 65vh;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .SignUptabelTag{
+        width: 35%;
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .SignUptabelTag{
+        width: 80%;
+        height: 65vh;
+    }
+    .form-header{
+        height: 6vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: calc(15px + 4vmin);
+        /* background-color: aqua; */
+    }
+    .inputTag{
+        height: 8vh;
+        /* background-color: aliceblue; */
+    }
+    .inputTagLabel{
+        font-size: calc(10px + 2vmin);
+    }
+    input[type=text],input[type=password]{
+        font-size: calc(10px + 2vmin);
+        margin-top: 2%;
+    }
+    input[type=button]{
+        border-radius: 2px;
+        height: 5vh;
+        margin-top: 5%;
+        font-size: calc(10px + 2vmin);
+    }
+    .signUpLabel{
+        font-size: calc(10px + 1vmin);
+    }
+    .signUpLabelTag{
+        height: 5vh;
+        margin: 3% 8% 0% 8%;  
+        /* background-color: blue; */
+    }
+  }
