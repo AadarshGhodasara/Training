@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import About from './Pages/HookExample/HookExample';
 import Profile from './Pages/Profile/Profile';
 import Form from './Pages/Form/Form';
@@ -18,7 +18,7 @@ import reducer from './reducer/reducer';
 import CheckUserStatus from './Components/checkUserStatus/UserStatus';
 import AddPhoto from './Pages/addPhoto/AddPhoto';
 import ShowImages from './Pages/showImages/showImages';
-
+// import TempLogin from './Pages/Login/TempLogin';
 const  store = createStore(reducer);
 
 // console.log(store.getState());
@@ -40,7 +40,8 @@ class App extends React.Component{
 
   render(){
     return(
-      <div className="App"> 
+      // <div className="App">
+      <div> 
       {/* <Form /> */}
       <Router history={history}>
           {/* <div className="menu">
@@ -61,6 +62,7 @@ class App extends React.Component{
         <Switch>
           <Route exact path="/">
               <CheckUserStatus  />
+              {/* <TempLogin /> */}
           </Route>
           <Route  path="/login">
               <Login  />

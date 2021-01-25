@@ -27,9 +27,9 @@ class AddPhoto extends React.Component {
       uploadImg = (e) => {
         
         const selected = e.target.files[0];
-        if(e.target.files[0] && types.includes(selected.type)){
+        if(e.target.files?.[0] && types.includes(selected.type)){
             this.setState({url:'',isUpload:1});
-            var url='';
+            let url='';
             const image = e.target.files[0];
 
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -53,10 +53,10 @@ class AddPhoto extends React.Component {
                 })
                 const createAt = timestamp();
                 collectionRef.add({ url , createAt }).then(
-                    function(docRef){
+                    (docRef) => {
                         this.setState({imageId : docRef.id});
                         console.log('IDDD =>',this.state.imageId);
-                    }.bind(this)
+                    }
                 );
                 alert('Image successfully upload...')
                 this.setState({isUpload:null});
@@ -91,9 +91,11 @@ class AddPhoto extends React.Component {
     }
 
     render(){
+        const {isUpload , isDelete} = this.state;
         return(
             <div>
-                <Header text='Add Photo' />
+                {/* <Header text='Add Photo' /> */}
+                <h1> Add Photo </h1>
                 {/* { this.state.isUpload === 0  ? <LoaderModel  />  :   */}
                 <div className='addPhoto-outter-tag'>                
                     <div className='upload-img-tag'>
@@ -131,8 +133,8 @@ class AddPhoto extends React.Component {
                         </div>
                     </div>
                 </div>
-                { this.state.isUpload && <LoaderModel text='Photo Uploading...'  /> }
-                { this.state.isDelete && <LoaderModel text='Photo Deleteing...'  /> }
+                { isUpload && <LoaderModel text='Photo Uploading...'  /> }
+                { isDelete && <LoaderModel text='Photo Deleteing...'  /> }
             </div>
         );
     }

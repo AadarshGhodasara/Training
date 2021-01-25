@@ -1,0 +1,22 @@
+.homeBody{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.home-header{
+    background-color: red;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+}
+.home-header-text{
+    font-size: calc(20px + 2vmin);
+}
+.home-tag{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+}

@@ -3,6 +3,7 @@ import LoaderLogo from '../../loader.svg';
 import './LoaderModal.css';
 
 const Modal = ({text}) => {
+    console.log('IN');
     return(
         <div className='loader-first-tag' >
             <div className='loader-sec-tag' >

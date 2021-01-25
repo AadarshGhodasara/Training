@@ -1,15 +1,11 @@
 import React from 'react';
 import firebase from '../firebase';
 import history from '../history';
-import Loader from '../Loader';
+import LoaderModal from '../Loader/LoaderModal';
 import './checkUserStatus.css';
 class UserStatus extends React.Component {
 
-    constructor(){
-        super();
-        this.CheckUserStatus = this.CheckUserStatus.bind(this);
-    }
-    CheckUserStatus(){
+    CheckUserStatus = () =>{
         console.log('check user');
         // history.push({pathname:'/home'})
         console.log(firebase);
@@ -29,7 +25,7 @@ class UserStatus extends React.Component {
     render(){
         return(
             <div style={{height:window.innerHeight}} className='loader-tag'>
-                <Loader text='Checking User Status...' />
+                <LoaderModal text='Checking User Status...' />
             </div>
         );
     }

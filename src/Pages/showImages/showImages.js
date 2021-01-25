@@ -6,15 +6,14 @@ import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';
 
 const ShowImages = () => {
-// var isLoading = 1;
 const [ selectedImg , setSelectedImg ] = useState(null);
 const [ selectedImgId , setSelectedImgId ] = useState(null);
 const { docs } = useStore('images');
-// console.log(docs);
 
     return(
         <div>
-            <Header text='show images' />
+            {/* <Header text='show images' /> */}
+            <h1 style={{color:'white'}}>Show Images</h1>
             <div className='img-grid'>
                 { docs && docs.map(doc => (
                     <div 

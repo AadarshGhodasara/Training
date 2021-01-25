@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.js';
 import './index.css';
-// import Loader from './Components/Loader';
-// import ShowImages from './Pages/showImages/showImages';
-// import AddPhoto from './Pages/addPhoto/AddPhoto';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Content from './Pages/content/content';
+
 
 ReactDOM.render(
-  <App />
+  // <App />
+  <Content />
+  // <TempLogin />
   // <Loader text='Photo Uploading...' />
   //  <AddPhoto />
   // <ShowImages />

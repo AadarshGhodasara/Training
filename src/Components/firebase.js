@@ -3,6 +3,7 @@ import 'firebase/storage';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/database';
+import { useState } from 'react';
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -22,11 +23,15 @@ var firebaseConfig = {
   const storage = firebase.storage();
   const store = firebase.firestore();
   const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-  
+  // const CurrentUser = firebase.auth().currentUser;
+  // const [CurrentUser,setCurrentUser] = useState(null);
+
   export{
     storage , 
     store,
     timestamp , 
+    // CurrentUser,
+    // setCurrentUser,
     firebase as default
   } 
 
