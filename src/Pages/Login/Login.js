@@ -87,9 +87,7 @@ const Login = () => {
                             name="email"
                             label="Email"
                             type="email"
-                              onChange={(event, value) => {
-                                setEmail(value);
-                              }}
+                            onChange={(event, value) => setEmail(value)}
                             InputLabelProps={{style:{color:'white',fontSize:'500'}}}
                             InputProps={{ style:{color:"white"} }}
                             />
@@ -105,9 +103,7 @@ const Login = () => {
                             label="Password"
                             type="password"
                             autoComplete="current-password"
-                            onChange={(event, value) => {
-                                setPass(value);
-                              }}
+                            onChange={(event, value) => setPass(value)}
                             InputLabelProps={{style:{color:'white'}}}
                             InputProps={{ style:{color:"white"} }}
                             />

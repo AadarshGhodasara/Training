@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useStore from '../../Components/hooks/useStore';
-import Header from '../../Components/Header/header';
 import Model from './Modal';
 import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';

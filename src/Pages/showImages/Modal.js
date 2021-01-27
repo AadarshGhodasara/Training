@@ -1,7 +1,7 @@
 import React from 'react';
-import './showImages.css';
+import './ShowImages.css';
 import Button from '@material-ui/core/Button';
-import { storage , store } from '../../Components/firebase';
+import { storage , store } from '../../Components/Firebase';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 const Modal = ({selectedImg , setSelectedImg ,imgID}) => {
 

@@ -1,5 +1,5 @@
 import  { useEffect , useState } from 'react';
-import { store } from '../firebase';
+import { store } from '../Firebase';
 
 export var isLoading= 1;
 const useStore = (collection) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from '../firebase';
 import history from '../history';
 import LoaderModal from '../Loader/LoaderModal';
-import './checkUserStatus.css';
+import './CheckUserStatus.css';
 class UserStatus extends React.Component {
 
     CheckUserStatus = () =>{

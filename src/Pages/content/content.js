@@ -1,7 +1,7 @@
-import Header from '../../Components/Header/header';
+import Header from '../../Components/Header/Header';
 import Home from '../Home/Home';
-import AddPhoto from '../addPhoto/AddPhoto';
-import ShowImages from '../showImages/showImages';
+import AddPhoto from '../AddPhoto/AddPhoto';
+import ShowImages from '../ShowImages/ShowImages';
 import AboutOwner from '../AboutOwner/AboutOwner';
 import Service from '../Service/Service';
 // import ''.

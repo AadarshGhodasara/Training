@@ -54,21 +54,23 @@
 @media screen and (max-width: 600px) {
     .About-tag{
         flex-direction: column;
-        /* background-color: black; */
     }
     .content-tag{
         width: 100%;
-        height: 52vh;
+        height: 38vh;
+        /* background-color: aqua; */
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .Owner-img-tag{
         width: 100%;
-        height: 50vh;
+        height: 42vh;
+        /* background-color: blue; */
     }
     .About-tag{
-        height: 105vh;
+        height: 84vh;
+        /* background-color: blueviolet; */
     }
 }
 @media screen and (min-width: 600px) {
