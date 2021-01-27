@@ -5,7 +5,7 @@ import Home from '../Home/Home';
 import AboutOwner from '../AboutOwner/AboutOwner';
 import Service from '../Service/Service';
 import ShowClockImages from '../ShowClockImages/ShowClockImages';
-
+import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
 function Content() {
 
     return(
@@ -22,6 +22,9 @@ function Content() {
             </section>
             <section id='ShowClockImages'>
                 <ShowClockImages />
+            </section>
+            <section id='ShowFrameImages'>
+                <ShowFrameImages />
             </section>
             {/* <section id='AddPhoto'>
                 <AddPhoto />
