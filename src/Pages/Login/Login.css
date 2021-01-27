@@ -1,4 +1,8 @@
 
+.Login-body{
+    background-color: black;
+}
+
 .tabelOutterTag{
     display: flex;
     justify-content: center;

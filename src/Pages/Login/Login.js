@@ -1,4 +1,4 @@
-import React  from 'react';
+import React , { useState }  from 'react';
 import './Login.css'; 
 import fire  from '../../Components/firebase';
 import history from '../../Components/history';
@@ -10,8 +10,9 @@ import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 
 const Login = () => {
-    let email = ''
-    let pass = ''
+    const [ email , setEmail ] = useState('');
+    const [ pass , setPass ] = useState('');
+
 
     
     function  submitLogin(){
@@ -58,7 +59,7 @@ const Login = () => {
             },
           }))(TextField);
         return(
-            <div>
+            <div className='Login-body'>
                 {/* <div className='Login-header'>
                     <h1>Header</h1>
                 </div> */}
@@ -79,15 +80,15 @@ const Login = () => {
                     <label className='form-header'>Login</label>
                     <div className='inputTag'>
                         <CssTextField
-                            defaultValue=''
                             variant="outlined"
-                            required
+                            // required
+                            value={email}
                             fullWidth
                             name="email"
                             label="Email"
                             type="email"
-                            onChange={event => {
-                                email = event.target.value;
+                              onChange={(event, value) => {
+                                setEmail(value);
                               }}
                             InputLabelProps={{style:{color:'white',fontSize:'500'}}}
                             InputProps={{ style:{color:"white"} }}
@@ -98,13 +99,14 @@ const Login = () => {
                             variant="outlined"
                             margin="normal"
                             required
+                            value={pass}
                             fullWidth
                             name="password"
                             label="Password"
                             type="password"
                             autoComplete="current-password"
-                            onChange={event => {
-                                pass = event.target.value;
+                            onChange={(event, value) => {
+                                setPass(value);
                               }}
                             InputLabelProps={{style:{color:'white'}}}
                             InputProps={{ style:{color:"white"} }}
@@ -118,15 +120,13 @@ const Login = () => {
                     </div>
                     <div className='signUpLabelTag'>
                         <Link href="/SignUp" variant="body2">
-                            {"Don't have an account ? Sign Up"}
+                            Don't have an account ? Sign Up
                         </Link>
                     </div>
                 </div>
             </div>
             </div>
         );
-    
-
 }
 
 

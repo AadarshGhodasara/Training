@@ -53,29 +53,30 @@
 
 
 import React from 'react';
-import * as ReactBootstrap from 'react-bootstrap';
+import { Navbar , Nav  } from 'react-bootstrap';
 import { scroller } from "react-scroll";
-
+const { Brand , Collapse , Toggle } = Navbar;
+const { Link } = Nav;
 function Header() {
     return(
         <div>
             {/* collapseOnSelect */}
-            <ReactBootstrap.Navbar  expand="md" bg="dark" variant="dark">
-                <ReactBootstrap.Navbar.Brand href="#Home">Header</ReactBootstrap.Navbar.Brand>
-                <ReactBootstrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <ReactBootstrap.Navbar.Collapse id="responsive-navbar-nav">
-                    <ReactBootstrap.Nav className="mr-auto">
-                        <ReactBootstrap.Nav.Link href="#Home">Home</ReactBootstrap.Nav.Link>
-                        <ReactBootstrap.Nav.Link onClick={() => scroller.scrollTo('About', {
+            <Navbar  expand="md" bg="dark" variant="dark">
+                <Brand href="#Home">Header</Brand>
+                <Toggle aria-controls="responsive-navbar-nav" />
+                <Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Link href="#Home">Home</Link>
+                        <Link onClick={() => scroller.scrollTo('About', {
                             smooth: true,
                             duration: 50,
-                        })}>About</ReactBootstrap.Nav.Link>
-                        <ReactBootstrap.Nav.Link  href="#Service"  >Service</ReactBootstrap.Nav.Link>
-                        <ReactBootstrap.Nav.Link  href="#AddPhoto">Add Photo</ReactBootstrap.Nav.Link>
-                        <ReactBootstrap.Nav.Link  href="#ShowPhoto">Show Photo</ReactBootstrap.Nav.Link>
-                    </ReactBootstrap.Nav>
-                </ReactBootstrap.Navbar.Collapse>
-            </ReactBootstrap.Navbar>
+                        })}>About</Link>
+                        <Link  href="#Service"  >Service</Link>
+                        <Link  href="#AddPhoto">Add Photo</Link>
+                        <Link  href="#ShowPhoto">Show Photo</Link>
+                    </Nav>
+                </Collapse>
+            </Navbar>
         </div>
     )
 }

@@ -11,9 +11,11 @@ import Link from '@material-ui/core/Link';
 import LoaderModal from '../../Components/Loader/LoaderModal';
 
 const  SignUp = () => {
-    let Email = '', Pass = '', 
-        Confirm_Pass = '', Name = '';
-        // isSignUp = null;
+
+        const [ Email , setEmail ] = useState('');
+        const [ Pass , setPass ] = useState('');
+        const [ Confirm_Pass , setRePass ] = useState('');
+        const [ Name , setName ] = useState('');
         const [ isSignUp , setIsSignUp ] = useState(null);
 
     
@@ -37,7 +39,7 @@ const  SignUp = () => {
                     
                      alert('Sign Up Successful And Verification Link Sent In Your Email...')
                     // this.setState({Confirm_password:'',password:'',Name:'',email:''});
-                    Confirm_Pass='';Pass='';Name='';Email='';
+                    // Confirm_Pass='';Pass='';Name='';Email='';
                     setIsSignUp(null);
                     history.push({ 
                             pathname: '/login',
@@ -114,7 +116,7 @@ const  SignUp = () => {
                                 label="Full Name"
                                 type="text"
                                 onChange={event => {
-                                    Name = event.target.value;
+                                    setName(event.target.value);
                                 }}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
@@ -130,7 +132,7 @@ const  SignUp = () => {
                                 label="Email"
                                 type="email"
                                 onChange={event => {
-                                    Email = event.target.value;
+                                    setEmail(event.target.value);
                                 }}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
@@ -146,7 +148,7 @@ const  SignUp = () => {
                                 label="Password"
                                 type="password"
                                 onChange={event => {
-                                    Pass = event.target.value;
+                                    setPass(event.target.value);
                                 }}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
@@ -163,7 +165,7 @@ const  SignUp = () => {
                                 type="password"
                                 autoComplete="current-password"
                                 onChange={event => {
-                                    Confirm_Pass = event.target.value;
+                                    setRePass(event.target.value);
                                 }}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
@@ -176,7 +178,7 @@ const  SignUp = () => {
                         </div>
                         <div className='LoginLabelTag'>
                             <Link href="/login" variant="body2">
-                                {"Already have an account? Sign in"}
+                                Already have an account? Sign in
                             </Link>
                         </div>
                     </div>
