@@ -1,13 +1,11 @@
 import Header from '../../Components/Header/Header';
 import Home from '../Home/Home';
-import AddPhoto from '../AddPhoto/AddPhoto';
-import ShowImages from '../ShowImages/ShowImages';
+// import AddPhoto from '../AddPhoto/AddPhoto';
+// import ShowImages from '../ShowImages/ShowImages';
 import AboutOwner from '../AboutOwner/AboutOwner';
 import Service from '../Service/Service';
-// import ''.
-// window.scroll({
-//     behavior: 'smooth'
-//   });
+import ShowClockImages from '../ShowClockImages/ShowClockImages';
+
 function Content() {
 
     return(
@@ -22,12 +20,15 @@ function Content() {
             <section id='Service'>
                 <Service />
             </section>
-            <section id='AddPhoto'>
+            <section id='ShowClockImages'>
+                <ShowClockImages />
+            </section>
+            {/* <section id='AddPhoto'>
                 <AddPhoto />
             </section>
             <section id='ShowPhoto'>
                 <ShowImages />
-            </section>
+            </section> */}
         </div>
     );
 }

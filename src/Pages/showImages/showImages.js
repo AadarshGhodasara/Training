@@ -11,7 +11,6 @@ const { docs } = useStore('images');
 
     return(
         <div>
-            {/* <Header text='show images' /> */}
             <h1 className='show-img-header'>Show Images</h1>
             <div className='img-grid'>
                 { docs && docs.map(doc => (

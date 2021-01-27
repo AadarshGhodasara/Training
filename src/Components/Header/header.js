@@ -72,8 +72,9 @@ function Header() {
                             duration: 50,
                         })}>About</Link>
                         <Link  href="#Service"  >Service</Link>
-                        <Link  href="#AddPhoto">Add Photo</Link>
-                        <Link  href="#ShowPhoto">Show Photo</Link>
+                        {/* <Link  href="#AddPhoto">Add Photo</Link> */}
+                        <Link  href="#ShowClockImages">Clock Modal</Link>
+                        {/* <Link  href="#ShowPhoto">Show Photo</Link> */}
                     </Nav>
                 </Collapse>
             </Navbar>

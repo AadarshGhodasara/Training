@@ -3,7 +3,6 @@ import 'firebase/storage';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/database';
-import { useState } from 'react';
 
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
