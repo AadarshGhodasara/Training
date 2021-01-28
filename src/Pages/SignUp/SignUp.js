@@ -115,9 +115,7 @@ const  SignUp = () => {
                                 name="Name"
                                 label="Full Name"
                                 type="text"
-                                onChange={event => {
-                                    setName(event.target.value);
-                                }}
+                                onChange={(event, value) => setName(value)}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
                                 />
@@ -131,9 +129,7 @@ const  SignUp = () => {
                                 name="email"
                                 label="Email"
                                 type="email"
-                                onChange={event => {
-                                    setEmail(event.target.value);
-                                }}
+                                onChange={(event, value) => setEmail(value)}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
                                 />
@@ -147,9 +143,7 @@ const  SignUp = () => {
                                 name="password"
                                 label="Password"
                                 type="password"
-                                onChange={event => {
-                                    setPass(event.target.value);
-                                }}
+                                onChange={(event, value) => setPass(value)}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
                                 />
@@ -164,9 +158,7 @@ const  SignUp = () => {
                                 label="Confirm Password"
                                 type="password"
                                 autoComplete="current-password"
-                                onChange={event => {
-                                    setRePass(event.target.value);
-                                }}
+                                onChange={(event, value) => setRePass(value)}
                                 InputLabelProps={{style:{color:'white',opacity:0.5}}}
                                 InputProps={{ style:{color:"white"} }}
                                 />

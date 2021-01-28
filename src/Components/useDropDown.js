@@ -1,7 +1,7 @@
 import React , { useState } from 'react';
 import '../Pages/HookExample/HookExample.css';
 
-const useDropDown = (label, defaultStatus, options) => {
+const UseDropDown = (label, defaultStatus, options) => {
     const[state, setState] = useState(defaultStatus);
     const id =`use-dropdown-${label.replace(" ","").toLowerCase()}`
     const Dropdown = () => (
@@ -27,4 +27,4 @@ const useDropDown = (label, defaultStatus, options) => {
     
 }
 
-export default useDropDown;
+export default UseDropDown;

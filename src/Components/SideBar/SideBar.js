@@ -3,7 +3,7 @@ import { slide as Menu } from 'react-burger-menu';
 import './SideBar.css';
 import fire from '../firebase';
 import history from '../history';
- const Sidebar = props => {
+ const SideBar = props => {
   return (
     <Menu >
       <a className="menu-item" href="/home">
@@ -45,4 +45,4 @@ import history from '../history';
 
 // className='logOut-text'
 
-export default Sidebar;
+export default SideBar;

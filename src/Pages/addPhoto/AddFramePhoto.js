@@ -1,6 +1,6 @@
 import React from 'react';
-import './AddPhoto';
-import Header from '../../Components/Header/Header';
+// import './AddPhoto';
+// import Header from '../../Components/Header/Header';
 import './AddPhoto.css';
 import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
@@ -9,8 +9,7 @@ import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 const types = ['image/png' , 'image/jpeg'];
 
-
-class AddPhoto extends React.Component {
+class AddFramePhoto extends React.Component {
     constructor(props) {
         super(props);
          this.state = { 
@@ -32,8 +31,8 @@ class AddPhoto extends React.Component {
             let url='';
             const image = e.target.files[0];
 
-            const uploadTask = storage.ref(`images/${image.name}`).put(image);
-            const collectionRef = store.collection('images');
+            const uploadTask = storage.ref(`Frame/${image.name}`).put(image);
+            const collectionRef = store.collection('Frame');
             uploadTask.on('state_changed',
             (snapshot) => {
                 // progress function
@@ -42,9 +41,9 @@ class AddPhoto extends React.Component {
                 // error function
                 console.log(error);
             },
-            async () => {
+             () => {
                 // complete function
-                await storage.ref('images').child(image.name).getDownloadURL()
+                storage.ref('Frame').child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
                     url = imgUrl;
@@ -74,7 +73,7 @@ class AddPhoto extends React.Component {
         if( this.state.url !== '' ){
             this.setState({isDelete:1});
             // storage.refFromURL
-            store.collection('images').doc(this.state.imageId).delete().then(()=>{
+            store.collection('Frame').doc(this.state.imageId).delete().then(()=>{
                 console.log('delete');
             }).catch((err)=>{
                 console.log(err);
@@ -140,7 +139,7 @@ class AddPhoto extends React.Component {
     }
 }
 
-export default AddPhoto;
+export default AddFramePhoto;
 
 
 

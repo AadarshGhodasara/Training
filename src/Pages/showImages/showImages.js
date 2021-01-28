@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import useStore from '../../Components/hooks/useStore';
-import Header from '../../Components/Header/header';
 import Model from './Modal';
 import { isLoading } from '../../Components/hooks/useStore'
 import LoaderModel from '../../Components/Loader/LoaderModal';
@@ -12,7 +11,6 @@ const { docs } = useStore('images');
 
     return(
         <div>
-            {/* <Header text='show images' /> */}
             <h1 className='show-img-header'>Show Images</h1>
             <div className='img-grid'>
                 { docs && docs.map(doc => (
