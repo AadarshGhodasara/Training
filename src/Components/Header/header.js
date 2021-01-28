@@ -75,6 +75,7 @@ function Header() {
                         {/* <Link  href="#AddPhoto">Add Photo</Link> */}
                         <Link  href="#ShowClockImages">Clock Modal</Link>
                         <Link  href="#ShowFrameImages">Frame Modal</Link>
+                        <Link  href="#ContactUs">Contact Us</Link>
                     </Nav>
                 </Collapse>
             </Navbar>
