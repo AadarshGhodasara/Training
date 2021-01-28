@@ -7,7 +7,11 @@ const ContactUs = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_c1haowq', 'template_hvxta7j', e.target, 'user_PkGvOVMKJrZ3K5udlcntm')
+        emailjs.sendForm(
+                        process.env.REACT_APP_SERVICE_ID,
+                        process.env.REACT_APP_TEMPLATE_ID,
+                        e.target,
+                        process.env.REACT_APP_USER_ID)
           .then((result) => {
               console.log(result.text);
               alert('Your Mail has been send. Thank you for connecting.');

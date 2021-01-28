@@ -1,6 +1,5 @@
 import React from 'react';
-import './AddPhoto';
-import './AddPhoto.css';
+import './AddClockPhoto.css';
 import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
@@ -24,7 +23,7 @@ class AddPhoto extends React.Component {
 
 
       uploadImg = (e) => {
-        
+        console.log('INNNNNNNN->-> -> ->');
         const selected = e.target.files[0];
         if(e.target.files?.[0] && types.includes(selected.type)){
             this.setState({url:'',isUpload:1});

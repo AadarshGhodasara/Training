@@ -1,7 +1,8 @@
 import React from 'react';
-import firebase from '../firebase';
-import history from '../history';
+import firebase from '../Firebase';
+import history from '../History';
 import LoaderModal from '../Loader/LoaderModal';
+// import Contact from '../../Pages/Content/content';
 import './CheckUserStatus.css';
 class UserStatus extends React.Component {
 
@@ -10,10 +11,15 @@ class UserStatus extends React.Component {
         // history.push({pathname:'/home'})
         console.log(firebase);
         firebase.auth().onAuthStateChanged(function(user) {
+            console.log(user);
             if (user) {
               // User is signed in.
-              history.push({pathname:'/home'})
+            //   history.push({pathname:'/home'})
+            console.log("VERI");
+            history.push({pathname:'/home'})
+            // <Contact />
             } else {
+                console.log("No VERI");
               // No user is signed in.
               history.push({pathname:'/login'})
             }
