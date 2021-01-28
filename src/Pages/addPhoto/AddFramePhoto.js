@@ -41,9 +41,9 @@ class AddFramePhoto extends React.Component {
                 // error function
                 console.log(error);
             },
-            async () => {
+             () => {
                 // complete function
-                await storage.ref('Frame').child(image.name).getDownloadURL()
+                storage.ref('Frame').child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
                     url = imgUrl;
