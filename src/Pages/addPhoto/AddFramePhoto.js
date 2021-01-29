@@ -1,7 +1,5 @@
 import React from 'react';
-// import './AddPhoto';
-// import Header from '../../Components/Header/Header';
-import './AddPhoto.css';
+import './AddFramePhoto.css';
 import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
@@ -9,13 +7,14 @@ import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 const types = ['image/png' , 'image/jpeg'];
 
-class AddFramePhoto extends React.Component {
+
+class AddPhoto extends React.Component {
     constructor(props) {
         super(props);
          this.state = { 
              pictures: [] ,
              image : '',
-             url : '',
+             frameUrl:'',
              imageId:null,
              isUpload:null,
              isDelete:null
@@ -23,14 +22,12 @@ class AddFramePhoto extends React.Component {
     }
 
 
-      uploadImg = (e) => {
-        
-        const selected = e.target.files[0];
-        if(e.target.files?.[0] && types.includes(selected.type)){
-            this.setState({url:'',isUpload:1});
-            let url='';
+    uploadFrameImg = (e) => {
+        const selected = e.target.files?.[0];
+        if(selected && types.includes(selected.type)){
+            this.setState({frameUrl:'',isUpload:1});
+            let collection_url='';
             const image = e.target.files[0];
-
             const uploadTask = storage.ref(`Frame/${image.name}`).put(image);
             const collectionRef = store.collection('Frame');
             uploadTask.on('state_changed',
@@ -46,15 +43,16 @@ class AddFramePhoto extends React.Component {
                 storage.ref('Frame').child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
-                    url = imgUrl;
-                    this.setState({url : imgUrl});
+                    collection_url = imgUrl;
+                    this.setState({frameUrl : imgUrl});
+                    console.log('***->',collection_url);
                     // alert('Image successfully upload...')
                 })
                 const createAt = timestamp();
-                collectionRef.add({ url , createAt }).then(
+                collectionRef.add({ collection_url , createAt }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
-                        console.log('IDDD =>',this.state.imageId);
+                        console.log('IDDD =>',this.state.imageId,collection_url);
                     }
                 );
                 alert('Image successfully upload...')
@@ -62,15 +60,12 @@ class AddFramePhoto extends React.Component {
             });
         }else{
             alert('Not Supported format...')
-            this.setState({url:'',isUpload:null});
+            this.setState({frameUrl:'',isUpload:null});
         }
-        console.log('===> ',this.state.url);
-
     }
 
     deleteImg = () => {
-        console.log('del');
-        if( this.state.url !== '' ){
+        if( this.state.frameUrl){
             this.setState({isDelete:1});
             // storage.refFromURL
             store.collection('Frame').doc(this.state.imageId).delete().then(()=>{
@@ -78,9 +73,9 @@ class AddFramePhoto extends React.Component {
             }).catch((err)=>{
                 console.log(err);
             })
-            let image = storage.refFromURL(this.state.url);
+            let image = storage.refFromURL(this.state.frameUrl);
             image.delete().then(() => {
-                this.setState({isDelete:null , url:'',imageId:null});
+                this.setState({isDelete:null , frameUrl:'',imageId:null});
                 // collectionRef.
                 console.log('delete');
             }).catch((error) => {
@@ -90,44 +85,46 @@ class AddFramePhoto extends React.Component {
     }
 
     render(){
-        const {isUpload , isDelete} = this.state;
+        const {isUpload , isDelete , frameUrl } = this.state;
         return(
-            <div>
-                {/* <Header text='Add Photo' /> */}
-                <h1> Add Photo </h1>
-                {/* { this.state.isUpload === 0  ? <LoaderModel  />  :   */}
-                <div className='addPhoto-outter-tag'>                
-                    <div className='upload-img-tag'>
+            <div className='addFramePhoto-body'>
+                <div className='addFramePhoto-header'>
+                    <label className='addFramePhoto-header-text'><strong>Add Frame Photo</strong></label>
+                </div>
+                <div className='addFramePhoto-outter-tag'>              
+                    <div className='frame-img-tag'>
                         <input 
                             type="file" 
                             name="uploadfile" 
-                            onChange={this.uploadImg} 
-                            id="img" 
+                            onChange={this.uploadFrameImg} 
+                            id="frameimg" 
                             style={{display:'none'}}
                         />
                         <input 
                             type="button" 
                             onClick={this.deleteImg} 
-                            id="del" 
+                            id="framedel" 
                             style={{display:'none'}}
-                        />                        
-                        <img src={this.state.url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className='img-tag' />
+                        />  
+                        <div className='showFrame-img-tag'>
+                            <img src={frameUrl || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={frameUrl ? 'frameImg-tag' : 'defaultFrame-img-tag'} />
+                        </div>                      
                         <div className='btn-tag'>
-                                <Button 
-                                    className='upload-btn' 
+                                 <Button 
+                                    className='uploadFrame-btn' 
                                     variant="contained" 
                                     color="primary"
                                     startIcon={<AddIcon />}
                                 >
-                                    <label style={{width:'100%'}} htmlFor="img">Add</label>
+                                    <label className='btn-text-css' htmlFor="frameimg">Add</label>
                                 </Button>
-                                <Button 
-                                    className='upload-btn' 
+                               <Button 
+                                    className='uploadFrame-btn' 
                                     variant="contained" 
                                     color="secondary"
                                     startIcon={<DeleteIcon />}
                                 >
-                                    <label style={{width:'100%'}} htmlFor='del' >Delete</label>
+                                    <label className='btn-text-css' htmlFor='framedel' >Delete</label>
                                 </Button>
                         </div>
                     </div>
@@ -139,7 +136,7 @@ class AddFramePhoto extends React.Component {
     }
 }
 
-export default AddFramePhoto;
+export default AddPhoto;
 
 
 

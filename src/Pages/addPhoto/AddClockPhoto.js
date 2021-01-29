@@ -1,7 +1,5 @@
 import React from 'react';
-import './AddPhoto';
-import Header from '../../Components/Header/Header';
-import './AddPhoto.css';
+import './AddClockPhoto.css';
 import { storage , store , timestamp  } from '../../Components/Firebase';
 import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
@@ -25,9 +23,8 @@ class AddPhoto extends React.Component {
 
 
       uploadImg = (e) => {
-        
-        const selected = e.target.files[0];
-        if(e.target.files?.[0] && types.includes(selected.type)){
+        const selected = e.target.files?.[0];
+        if(selected && types.includes(selected.type)){
             this.setState({url:'',isUpload:1});
             let url='';
             const image = e.target.files[0];
@@ -71,7 +68,7 @@ class AddPhoto extends React.Component {
 
     deleteImg = () => {
         console.log('del');
-        if( this.state.url !== '' ){
+        if( this.state.url){
             this.setState({isDelete:1});
             // storage.refFromURL
             store.collection('images').doc(this.state.imageId).delete().then(()=>{
@@ -91,13 +88,13 @@ class AddPhoto extends React.Component {
     }
 
     render(){
-        const {isUpload , isDelete} = this.state;
+        const {isUpload , isDelete, url} = this.state;
         return(
-            <div>
-                {/* <Header text='Add Photo' /> */}
-                <h1> Add Photo </h1>
-                {/* { this.state.isUpload === 0  ? <LoaderModel  />  :   */}
-                <div className='addPhoto-outter-tag'>                
+            <div className='addPhoto-body'>
+                <div className='addPhoto-header'>
+                    <label className='addPhoto-header-text'><strong>Add Clock Photo</strong></label>
+                </div>
+                <div className='addPhoto-outter-tag'>              
                     <div className='upload-img-tag'>
                         <input 
                             type="file" 
@@ -111,24 +108,26 @@ class AddPhoto extends React.Component {
                             onClick={this.deleteImg} 
                             id="del" 
                             style={{display:'none'}}
-                        />                        
-                        <img src={this.state.url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className='img-tag' />
+                        />  
+                        <div className='show-img-tag'>
+                            <img src={url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={ url ? 'img-tag' : 'default-img-tag'} />
+                        </div>                      
                         <div className='btn-tag'>
-                                <Button 
+                                 <Button 
                                     className='upload-btn' 
                                     variant="contained" 
                                     color="primary"
                                     startIcon={<AddIcon />}
                                 >
-                                    <label style={{width:'100%'}} htmlFor="img">Add</label>
+                                    <label className='btn-text-css' htmlFor="img">Add</label>
                                 </Button>
-                                <Button 
+                               <Button 
                                     className='upload-btn' 
                                     variant="contained" 
                                     color="secondary"
                                     startIcon={<DeleteIcon />}
                                 >
-                                    <label style={{width:'100%'}} htmlFor='del' >Delete</label>
+                                    <label className='btn-text-css' htmlFor='del' >Delete</label>
                                 </Button>
                         </div>
                     </div>

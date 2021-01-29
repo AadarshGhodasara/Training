@@ -1,8 +1,8 @@
 import React from 'react';
 // import './App.css';
-import About from './Pages/HookExample/HookExample';
-import Profile from './Pages/Profile/Profile';
-import Form from './Pages/Form/Form';
+// import About from './Pages/HookExample/HookExample';
+// import Profile from './Pages/Profile/Profile';
+// import Form from './Pages/Form/Form';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import {
@@ -10,16 +10,17 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Home from './Pages/Home/Home';
-import { createStore  } from 'redux';
-import history from './Components/history';
-import { Provider } from 'react-redux';
-import reducer from './reducer/reducer';
+import Contact from './Pages/Content/content';
+// import Home from './Pages/Home/Home';
+// import { createStore  } from 'redux';
+import history from './Components/History';
+// import { Provider } from 'react-redux';
+// import reducer from './reducer/reducer';
 import CheckUserStatus from './Components/checkUserStatus/UserStatus';
-import AddPhoto from './Pages/addPhoto/AddPhoto';
-import ShowImages from './Pages/showImages/showImages';
+// import AddPhoto from './Pages/addPhoto/AddPhoto';
+// import ShowImages from './Pages/showImages/showImages';
 // import TempLogin from './Pages/Login/TempLogin';
-const  store = createStore(reducer);
+// const  store = createStore(reducer);
 
 // console.log(store.getState());
 
@@ -42,38 +43,26 @@ class App extends React.Component{
     return(
       // <div className="App">
       <div> 
-      {/* <Form /> */}
       <Router history={history}>
-          {/* <div className="menu">
-            <div className='firstTag'>
-            <Sidebar pageWrapId={'page-wrap'}  outerContainerId={'outer-container'}   />
-            </div>
-            <div className="Login-header">
-              <label className='Login-headerText'>{this.state.headerName}</label>
-            </div>
-            <div className='menuItem'>
-              
-              <h3 className='h3'><Link to="/" onClick={(e) => this.setState({headerName:'Login'})} >Login</Link></h3>
-              <h3 className='h3'><Link to="/HookExample" onClick={(e) => this.setState({headerName:'Hook'})}>Hook</Link></h3>
-              <h3 className='h3'><Link to="/Profile" onClick={(e) => this.setState({headerName:'Profile'})}>Profile</Link></h3>
-              <h3 className='h3'><Link to="/Form" onClick={(e) => this.setState({headerName:'Registration Form'})}>Form</Link></h3>
-              </div>
-          </div> */}
         <Switch>
           <Route exact path="/">
               <CheckUserStatus  />
-              {/* <TempLogin /> */}
           </Route>
           <Route  path="/login">
               <Login  />
           </Route>
-          <Route path="/home">
+          {/* <Route path="/home">
             <Home />
-          </Route>
+          </Route> */}
           <Route path="/SignUp">
             <SignUp />
           </Route>
-          <Route path="/HookExample">
+          <Route path="/home">
+            {/* <SignUp /> */}
+            <Contact />
+          </Route>
+          
+          {/* <Route path="/HookExample">
             <About />
           </Route>
           <Route path="/Profile">
@@ -89,7 +78,7 @@ class App extends React.Component{
           </Route>
           <Route path="/ShowImages">
             <ShowImages />
-          </Route>
+          </Route> */}
         </Switch>
       </Router>
       </div>
