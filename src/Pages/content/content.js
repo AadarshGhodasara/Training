@@ -1,15 +1,13 @@
-import Header from '../../Components/Header/Header';
+import Header from '../../Components/Header/header.js';
 import Home from '../Home/Home';
 import AboutOwner from '../AboutOwner/AboutOwner';
 import Service from '../Service/Service';
-import AddClockPhoto from '../AddPhoto/AddClockPhoto';
-import AddFramePhoto from '../AddPhoto/AddFramePhoto';
 // import ShowClockImages from '../ShowClockImages/ShowClockImages';
 // import ShowFrameImages from '../ShowFrameImages/ShowFrameImages';
 import ContactUs from '../ContactUs/ContactUs';
-function Content() {
+function Content(props) {
 
-    
+
 
     return(
         <div >
@@ -23,18 +21,23 @@ function Content() {
             <section id='Service'>
                 <Service />
             </section>
-            <section id='AddClockPhoto'>
-                <AddClockPhoto />
-            </section>
-            <section id='AddFramePhoto'>
-                <AddFramePhoto />
-            </section>
-            {/* <section id='ShowClockImages'>
-                <ShowClockImages />
-            </section>
-            <section id='ShowFrameImages'>
-                <ShowFrameImages />
-            </section> */}
+            
+        
+                    {/* <section id='AddClockPhoto'>
+                    <AddClockPhoto />
+                    </section>
+                    <section id='AddFramePhoto'>
+                        <AddFramePhoto />
+                    </section> */}
+                    {/* <section id='ShowClockImages'>
+                        <ShowClockImages />
+                    </section>
+                    <section id='ShowFrameImages'>
+                        <ShowFrameImages />
+                    </section> */}
+               
+
+
             <section id='ContactUs'>
                 <ContactUs />
             </section>

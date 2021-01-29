@@ -4,6 +4,10 @@ import history from '../History';
 import LoaderModal from '../Loader/LoaderModal';
 // import Contact from '../../Pages/Content/content';
 import './CheckUserStatus.css';
+export let adminVerify=false;
+export function setAdminVerify(value) {
+    adminVerify = value;
+}
 class UserStatus extends React.Component {
 
     CheckUserStatus = () =>{
@@ -16,12 +20,15 @@ class UserStatus extends React.Component {
               // User is signed in.
             //   history.push({pathname:'/home'})
             console.log("VERI");
-            history.push({pathname:'/home'})
+            adminVerify=true;
+            history.push({pathname:'/home'});
             // <Contact />
             } else {
                 console.log("No VERI");
+                adminVerify=false;
+                history.push({pathname:'/home'});
               // No user is signed in.
-              history.push({pathname:'/login'})
+            //   history.push({pathname:'/login'})
             }
           });
     }

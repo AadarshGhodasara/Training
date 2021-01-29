@@ -5,14 +5,13 @@ import history from '../../Components/History';
 import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Avatar from '@material-ui/core/Avatar';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import { FormControl , FormLabel } from 'react-bootstrap';
+import { setAdminVerify } from '../../Components/checkUserStatus/UserStatus';
 
 const Login = () => {
     const [ email , setEmail ] = useState('');
     const [ pass , setPass ] = useState('');
-
+    // const [adminVerify , setAdminVerify] = useState(false);
 
     
     function  submitLogin(){
@@ -25,44 +24,16 @@ const Login = () => {
                     alert('Email Not Verified...');
                 }else{
                     alert('Successful Login...');
-                    history.push({pathname:'/home'});
+                    setAdminVerify(true);
+                    history.push({pathname:'/'});
                 }
             }
         )
         .catch((error) => alert(error.message))
     }
-        const CssTextField = withStyles((theme)=>({
-            root: {
-              '& label.Mui-focused': {
-                color: 'white',
-              },
-              '& .MuiInput-underline:after': {
-                borderBottomColor: 'yellow',
-              },
-              '.MuiInputBase-root':{
-                // '& fieldset': {
-                    color:'white'
-                //   },
-              },
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  
-                  borderColor: '#737373'
-                },
-                '&:hover fieldset': {
-                    borderColor: 'white'
-                },
-                '&.Mui-focused fieldset': {
-                    borderColor: theme.palette.primary.main,
-                },
-              },
-            },
-          }))(TextField);
+        
         return(
             <div className='Login-body'>
-                {/* <div className='Login-header'>
-                    <h1>Header</h1>
-                </div> */}
             <div className="tabelOutterTag" >
                 
                 <div className='tabelTag'>
@@ -77,47 +48,20 @@ const Login = () => {
                     </Avatar>
                     </div>
 
-                    <label className='form-header'>Login</label>
+                    <label className='form-header'>Administrator Login</label>
                     <div className='inputTag'>
-                        <CssTextField
-                            variant="outlined"
-                            // required
-                            value={email}
-                            fullWidth
-                            name="email"
-                            label="Email"
-                            type="email"
-                            onChange={(event, value) => setEmail(value)}
-                            InputLabelProps={{style:{color:'white',fontSize:'500'}}}
-                            InputProps={{ style:{color:"white"} }}
-                            />
+                        <FormLabel className='label-css'>Email address</FormLabel>
+                        <FormControl onChange={(e)=> setEmail(e.target.value)} type="email" size='lg' placeholder="Email" />
                     </div>
                     <div className='inputTag'>
-                        <CssTextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            value={pass}
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            autoComplete="current-password"
-                            onChange={(event, value) => setPass(value)}
-                            InputLabelProps={{style:{color:'white'}}}
-                            InputProps={{ style:{color:"white"} }}
-                            />
+                        <FormLabel className='label-css'>Password</FormLabel>
+                        <FormControl onChange={(e)=> setPass(e.target.value)} type="password" size='lg' placeholder="Password" />
                     </div>
                     <div className='inputTag'>
                         <Button variant="contained" fullWidth={true} color="primary" onClick={submitLogin}>
                             SIGN IN
                         </Button>
                         {/* <input type="Submit" onClick={submitLogin}  /> */}
-                    </div>
-                    <div className='signUpLabelTag'>
-                        <Link href="/SignUp" variant="body2">
-                            Don't have an account ? Sign Up
-                        </Link>
                     </div>
                 </div>
             </div>

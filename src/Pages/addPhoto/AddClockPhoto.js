@@ -5,6 +5,8 @@ import LoaderModel from '../../Components/Loader/LoaderModal';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
+import history from '../../Components/History';
+import AddPhotoHeader from './AddPhotoHeader';
 const types = ['image/png' , 'image/jpeg'];
 
 
@@ -86,54 +88,57 @@ class AddPhoto extends React.Component {
             })
         }
     }
+    goback = () => {
+        history.push({pathname:'/'})
+    }
 
     render(){
         const {isUpload , isDelete, url} = this.state;
         return(
-            <div className='addPhoto-body'>
-                <div className='addPhoto-header'>
-                    <label className='addPhoto-header-text'><strong>Add Clock Photo</strong></label>
-                </div>
-                <div className='addPhoto-outter-tag'>              
-                    <div className='upload-img-tag'>
-                        <input 
-                            type="file" 
-                            name="uploadfile" 
-                            onChange={this.uploadImg} 
-                            id="img" 
-                            style={{display:'none'}}
-                        />
-                        <input 
-                            type="button" 
-                            onClick={this.deleteImg} 
-                            id="del" 
-                            style={{display:'none'}}
-                        />  
-                        <div className='show-img-tag'>
-                            <img src={url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={ url ? 'img-tag' : 'default-img-tag'} />
-                        </div>                      
-                        <div className='btn-tag'>
-                                 <Button 
-                                    className='upload-btn' 
-                                    variant="contained" 
-                                    color="primary"
-                                    startIcon={<AddIcon />}
-                                >
-                                    <label className='btn-text-css' htmlFor="img">Add</label>
-                                </Button>
-                               <Button 
-                                    className='upload-btn' 
-                                    variant="contained" 
-                                    color="secondary"
-                                    startIcon={<DeleteIcon />}
-                                >
-                                    <label className='btn-text-css' htmlFor='del' >Delete</label>
-                                </Button>
+            <div>
+                 <AddPhotoHeader text='Add Clock Photo' clock={true} />  
+                <div className='addPhoto-body'>
+                    <div className='addPhoto-outter-tag'>              
+                        <div className='upload-img-tag'>
+                            <input 
+                                type="file" 
+                                name="uploadfile" 
+                                onChange={this.uploadImg} 
+                                id="img" 
+                                style={{display:'none'}}
+                            />
+                            <input 
+                                type="button" 
+                                onClick={this.deleteImg} 
+                                id="del" 
+                                style={{display:'none'}}
+                            />  
+                            <div className='show-img-tag'>
+                                <img src={url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={ url ? 'img-tag' : 'default-img-tag'} />
+                            </div>                      
+                            <div className='btn-tag'>
+                                    <Button 
+                                        className='upload-btn' 
+                                        variant="contained" 
+                                        color="primary"
+                                        startIcon={<AddIcon />}
+                                    >
+                                        <label className='btn-text-css' htmlFor="img">Add</label>
+                                    </Button>
+                                <Button 
+                                        className='upload-btn' 
+                                        variant="contained" 
+                                        color="secondary"
+                                        startIcon={<DeleteIcon />}
+                                    >
+                                        <label className='btn-text-css' htmlFor='del' >Delete</label>
+                                    </Button>
+                            </div>
                         </div>
                     </div>
+                    { isUpload && <LoaderModel text='Photo Uploading...'  /> }
+                    { isDelete && <LoaderModel text='Photo Deleteing...'  /> }
                 </div>
-                { isUpload && <LoaderModel text='Photo Uploading...'  /> }
-                { isDelete && <LoaderModel text='Photo Deleteing...'  /> }
             </div>
         );
     }
