@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Content from './Pages/Content/content';
+// import Content from './Pages/Content/content';
 import App from './App';
 // import AddFramePhoto from './Pages/AddPhoto/AddFramePhoto';
 // import Login from './Pages/Login/Login';

@@ -23,7 +23,6 @@ class AddPhoto extends React.Component {
 
 
       uploadImg = (e) => {
-        console.log('INNNNNNNN->-> -> ->');
         const selected = e.target.files[0];
         if(e.target.files?.[0] && types.includes(selected.type)){
             this.setState({url:'',isUpload:1});
@@ -89,7 +88,7 @@ class AddPhoto extends React.Component {
     }
 
     render(){
-        const {isUpload , isDelete} = this.state;
+        const {isUpload , isDelete, url} = this.state;
         return(
             <div className='addPhoto-body'>
                 <div className='addPhoto-header'>
@@ -111,8 +110,8 @@ class AddPhoto extends React.Component {
                             style={{display:'none'}}
                         />  
                         <div className='show-img-tag'>
-                            {   this.state.url !== '' ? 
-                                <img src={this.state.url} alt="Upload logo" className='img-tag' />
+                            {   url !== '' ? 
+                                <img src={url} alt="Upload logo" className='img-tag' />
                                 :
                                 <img src={'https://via.placeholder.com/400x300'} alt="Upload logo" className='default-img-tag' />
                             }

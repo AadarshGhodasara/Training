@@ -23,7 +23,6 @@ class AddPhoto extends React.Component {
 
 
     uploadFrameImg = (e) => {
-        console.log('INNNNNNNN->');
         const selected = e.target.files[0];
         if(e.target.files?.[0] && types.includes(selected.type)){
             this.setState({frameUrl:'',isUpload:1});
@@ -57,7 +56,6 @@ class AddPhoto extends React.Component {
                         console.log('IDDD =>',this.state.imageId);
                     }
                 );
-                // console.log('->',this.state.url);
                 alert('Image successfully upload...')
                 this.setState({isUpload:null});
             });
@@ -65,12 +63,9 @@ class AddPhoto extends React.Component {
             alert('Not Supported format...')
             this.setState({frameUrl:'',isUpload:null});
         }
-        // console.log('===> ',this.state.url);
-
     }
 
     deleteImg = () => {
-        console.log('del');
         if( this.state.frameUrl !== '' ){
             this.setState({isDelete:1});
             // storage.refFromURL
@@ -91,7 +86,7 @@ class AddPhoto extends React.Component {
     }
 
     render(){
-        const {isUpload , isDelete} = this.state;
+        const {isUpload , isDelete , frameUrl } = this.state;
         return(
             <div className='addFramePhoto-body'>
                 <div className='addFramePhoto-header'>
@@ -113,8 +108,8 @@ class AddPhoto extends React.Component {
                             style={{display:'none'}}
                         />  
                         <div className='showFrame-img-tag'>
-                            {   this.state.frameUrl !== '' ? 
-                                <img src={this.state.frameUrl} alt="Upload logo" className='frameImg-tag' />
+                            {   frameUrl !== '' ? 
+                                <img src={frameUrl} alt="Upload logo" className='frameImg-tag' />
                                 :
                                 <img src={'https://via.placeholder.com/400x300'} alt="Upload logo" className='defaultFrame-img-tag' />
                             }
