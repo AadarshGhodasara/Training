@@ -23,12 +23,11 @@ class AddPhoto extends React.Component {
 
 
     uploadFrameImg = (e) => {
-        const selected = e.target.files[0];
-        if(e.target.files?.[0] && types.includes(selected.type)){
+        const selected = e.target.files?.[0];
+        if(selected && types.includes(selected.type)){
             this.setState({frameUrl:'',isUpload:1});
-            let url='';
+            let collection_url='';
             const image = e.target.files[0];
-
             const uploadTask = storage.ref(`Frame/${image.name}`).put(image);
             const collectionRef = store.collection('Frame');
             uploadTask.on('state_changed',
@@ -44,16 +43,16 @@ class AddPhoto extends React.Component {
                 storage.ref('Frame').child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
-                    url = imgUrl;
+                    collection_url = imgUrl;
                     this.setState({frameUrl : imgUrl});
-                    // console.log('->',this.state.url);
+                    console.log('***->',collection_url);
                     // alert('Image successfully upload...')
                 })
                 const createAt = timestamp();
-                collectionRef.add({ url , createAt }).then(
+                collectionRef.add({ collection_url , createAt }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
-                        console.log('IDDD =>',this.state.imageId);
+                        console.log('IDDD =>',this.state.imageId,collection_url);
                     }
                 );
                 alert('Image successfully upload...')
@@ -66,7 +65,7 @@ class AddPhoto extends React.Component {
     }
 
     deleteImg = () => {
-        if( this.state.frameUrl !== '' ){
+        if( this.state.frameUrl){
             this.setState({isDelete:1});
             // storage.refFromURL
             store.collection('Frame').doc(this.state.imageId).delete().then(()=>{
@@ -108,12 +107,7 @@ class AddPhoto extends React.Component {
                             style={{display:'none'}}
                         />  
                         <div className='showFrame-img-tag'>
-                            {   frameUrl !== '' ? 
-                                <img src={frameUrl} alt="Upload logo" className='frameImg-tag' />
-                                :
-                                <img src={'https://via.placeholder.com/400x300'} alt="Upload logo" className='defaultFrame-img-tag' />
-                            }
-                           
+                            <img src={frameUrl || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={frameUrl ? 'frameImg-tag' : 'defaultFrame-img-tag'} />
                         </div>                      
                         <div className='btn-tag'>
                                  <Button 

@@ -23,8 +23,8 @@ class AddPhoto extends React.Component {
 
 
       uploadImg = (e) => {
-        const selected = e.target.files[0];
-        if(e.target.files?.[0] && types.includes(selected.type)){
+        const selected = e.target.files?.[0];
+        if(selected && types.includes(selected.type)){
             this.setState({url:'',isUpload:1});
             let url='';
             const image = e.target.files[0];
@@ -68,7 +68,7 @@ class AddPhoto extends React.Component {
 
     deleteImg = () => {
         console.log('del');
-        if( this.state.url !== '' ){
+        if( this.state.url){
             this.setState({isDelete:1});
             // storage.refFromURL
             store.collection('images').doc(this.state.imageId).delete().then(()=>{
@@ -110,12 +110,7 @@ class AddPhoto extends React.Component {
                             style={{display:'none'}}
                         />  
                         <div className='show-img-tag'>
-                            {   url !== '' ? 
-                                <img src={url} alt="Upload logo" className='img-tag' />
-                                :
-                                <img src={'https://via.placeholder.com/400x300'} alt="Upload logo" className='default-img-tag' />
-                            }
-                           
+                            <img src={url || 'https://via.placeholder.com/400x300'} alt="Upload logo" className={ url ? 'img-tag' : 'default-img-tag'} />
                         </div>                      
                         <div className='btn-tag'>
                                  <Button 
