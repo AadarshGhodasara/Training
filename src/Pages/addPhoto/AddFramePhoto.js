@@ -88,7 +88,7 @@ class AddPhoto extends React.Component {
     render(){
         const {isUpload , isDelete , frameUrl } = this.state;
         return(
-            <div>
+            <>
                 <AddPhotoHeader text='Add Frame Photo' Clock={false} />            
                 <div className='addFramePhoto-body'>
                     <div className='addFramePhoto-outter-tag'>              
@@ -132,7 +132,7 @@ class AddPhoto extends React.Component {
                     { isUpload && <LoaderModel text='Photo Uploading...'  /> }
                     { isDelete && <LoaderModel text='Photo Deleteing...'  /> }
                 </div>
-            </div>
+            </>
         );
     }
 }

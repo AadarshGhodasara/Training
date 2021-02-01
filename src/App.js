@@ -1,40 +1,43 @@
-import React from 'react';
+import React , {Suspense , Fragment } from 'react';
 import Login from './Pages/Login/Login';
 import {
   Router,
   Switch,
   Route,
 } from "react-router-dom";
-import CheckUserStatus from './Components/checkUserStatus/UserStatus';
-import Contact from './Pages/Content/content';
 import history from './Components/History';
-import AddClockPhoto from './Pages/AddPhoto/AddClockPhoto';
-import AddFramePhoto from './Pages/AddPhoto/AddFramePhoto';
+import Loader from './Components/Loader/LoaderModal';
+const CheckUserStatus = React.lazy(() => import('./Components/checkUserStatus/UserStatus'));
+const Contact = React.lazy(() => import('./Pages/Content/content'));
+const AddClockPhoto = React.lazy(() => import('./Pages/AddPhoto/AddClockPhoto'));
+const AddFramePhoto = React.lazy(() => import('./Pages/AddPhoto/AddFramePhoto'));
 
 class App extends React.Component{
   render(){
     return(
-      <div> 
-      <Router history={history}>
-        <Switch>
-        <Route exact path="/">
-            <CheckUserStatus />
-          </Route>
-          <Route  path="/home">
-            <Contact />
-          </Route>
-          <Route  path="/login">
-              <Login  />
-          </Route>
-          <Route  path="/AddClockImages">
-              <AddClockPhoto  />
-          </Route>
-          <Route  path="/AddFrameImages">
-              <AddFramePhoto  />
-          </Route>
-        </Switch>
-      </Router>
-      </div>
+      <Fragment> 
+        <Suspense fallback={<Loader text='Loading' />}>
+        <Router history={history}>
+          <Switch>
+          <Route exact path="/">
+              <CheckUserStatus />
+            </Route>
+            <Route  path="/home">
+              <Contact />
+            </Route>
+            <Route  path="/login">
+                <Login  />
+            </Route>
+            <Route  path="/AddClockImages">
+                <AddClockPhoto  />
+            </Route>
+            <Route  path="/AddFrameImages">
+                <AddFramePhoto  />
+            </Route>
+          </Switch>
+        </Router>
+        </Suspense>
+      </Fragment>
     );
   }
 }

@@ -1,20 +1,22 @@
-import React , { useState } from 'react';
+import React , { useState  } from 'react';
 import './Header.css';
 import { Navbar , Nav  } from 'react-bootstrap';
 import history from '../History';
-import { adminVerify } from '../checkUserStatus/UserStatus';
-
+import   fire  from '../Firebase';
+import { useSelector , useDispatch } from 'react-redux';
+import { setLogout  } from '../action/setLogged';
 const { Brand , Collapse , Toggle } = Navbar;
 const { Link } = Nav;
 
+
+
 function Header() {
 
-
-    console.log('admin*->',adminVerify);
     const [navExpanded,setNavExpanded] = useState(false);
     const [navBar,setNavBar] = useState(false);
     const [windowInnerWidth , setWindowInnerWidth] = useState(0);
-    
+    const isLogin = useSelector(state => state);
+    const dispatch = useDispatch();
 
     const changeBackground = () => {
         if(window.scrollY >=80){
@@ -35,7 +37,6 @@ function Header() {
         }
     }
     const setWidth = () => {
-        console.log('in');
         setWindowInnerWidth(window.innerWidth);
     }
 
@@ -43,6 +44,17 @@ function Header() {
     window.addEventListener('scroll',changeBackground);
     const goToLogin = () => {
         history.push({pathname:'/login'});
+    }
+    const goLogout = () => {
+        fire.auth().signOut().then(() => {
+            // Sign-out successful.
+            alert('Sign-out successful...');
+            dispatch(setLogout());
+            history.push({pathname:'/home'});
+          }).catch((error) => {
+            // An error happened.
+            console.log(error.message);
+          });
     }
     const AddClock = () => {
         history.push({pathname:'/AddClockImages'});
@@ -61,19 +73,22 @@ function Header() {
                         <Link onSelect={checkExapnd}  href="#Home">Home</Link>
                         <Link onSelect={checkExapnd}  href="#About">About</Link>
                         <Link onSelect={checkExapnd} href="#Service"  >Service</Link>
-                        { adminVerify 
+                        { isLogin 
                         ?
                         <Nav>
                         <Link onSelect={checkExapnd} onClick={AddClock} href="/AddClockImages">Add Clock</Link>
                         <Link onSelect={checkExapnd} onClick={AddFrame} href="/AddFrameImages">Add Frame</Link>
                         </Nav>
                         :
-
                          null
                         }
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
-                        <Link onSelect={checkExapnd} onClick={goToLogin} href="/login">Login</Link>
+                        { isLogin  ? 
+                            <Link onSelect={checkExapnd} onClick={goLogout} href="/home">Logout</Link>                    
+                        :
+                            <Link onSelect={checkExapnd} onClick={goToLogin} href="/login">Login</Link>
+                        }
                     </Nav>
                 </Collapse>
             </Navbar>

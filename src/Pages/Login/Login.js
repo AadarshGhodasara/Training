@@ -6,16 +6,16 @@ import Button from '@material-ui/core/Button';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Avatar from '@material-ui/core/Avatar';
 import { FormControl , FormLabel } from 'react-bootstrap';
-import { setAdminVerify } from '../../Components/checkUserStatus/UserStatus';
+import { useDispatch } from 'react-redux';
+import {setLogin} from '../../Components/action/setLogged';
 
 const Login = () => {
     const [ email , setEmail ] = useState('');
     const [ pass , setPass ] = useState('');
-    // const [adminVerify , setAdminVerify] = useState(false);
-
+    const dispatch = useDispatch();
     
     function  submitLogin(){
-        console.log(pass,'==',email)
+        // console.log(pass,'==',email)
         fire.auth().signInWithEmailAndPassword(email,pass)
         .then(
             async function(){
@@ -24,8 +24,8 @@ const Login = () => {
                     alert('Email Not Verified...');
                 }else{
                     alert('Successful Login...');
-                    setAdminVerify(true);
-                    history.push({pathname:'/'});
+                    dispatch(setLogin());   
+                    history.push({pathname:'/home'});
                 }
             }
         )
