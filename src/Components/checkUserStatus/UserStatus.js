@@ -2,40 +2,35 @@ import React from 'react';
 import firebase from '../Firebase';
 import history from '../History';
 import LoaderModal from '../Loader/LoaderModal';
-// import Contact from '../../Pages/Content/content';
+import { useDispatch , useSelector } from 'react-redux';
+import { setLogin , setLogout} from '../action/setLogged';
 import './CheckUserStatus.css';
-class UserStatus extends React.Component {
 
-    CheckUserStatus = () =>{
-        console.log('check user');
-        // history.push({pathname:'/home'})
-        console.log(firebase);
+
+function UserStatus() {
+
+    const dispatch = useDispatch();
+    const isLogin = useSelector(state => state);
+
+    const CheckUserStatus = () =>{
         firebase.auth().onAuthStateChanged(function(user) {
-            console.log(user);
+            // console.log(user);
             if (user) {
-              // User is signed in.
-            //   history.push({pathname:'/home'})
-            console.log("VERI");
-            history.push({pathname:'/home'})
-            // <Contact />
+            dispatch(setLogin());
+            window.localStorage.setItem('isLoading',isLogin);
+            history.push({pathname:'/home'});
             } else {
-                console.log("No VERI");
-              // No user is signed in.
-              history.push({pathname:'/login'})
+                dispatch(setLogout());
+                history.push({pathname:'/home'});
             }
           });
     }
-    componentDidMount(){
-        this.CheckUserStatus();
-    }
-    render(){
-        return(
-            <div style={{height:window.innerHeight}} className='loader-tag'>
-                <LoaderModal text='Checking User Status...' />
-            </div>
-        );
-    }
-
+    CheckUserStatus();
+    return(
+        <div style={{height:window.innerHeight}} className='loader-tag'>
+            <LoaderModal text='Checking User Status...' />
+        </div>
+    );
 }
 
 export default UserStatus;

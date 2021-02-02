@@ -2,20 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Content from './Pages/Content/content';
 import App from './App';
-// import AddFramePhoto from './Pages/AddPhoto/AddFramePhoto';
-// import Login from './Pages/Login/Login';
-// import AddIMG from './Pages/AddPhoto/AddPhoto';
-// import ShowPhoto from './Pages/ShowImages/ShowImages';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import isLoaggedReducer from './Components/reducer/isLogged';
+
+
+const store = createStore(
+  isLoaggedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+  
 
 ReactDOM.render(
-  // <Content />
-  <App />
-  // <AddFramePhoto />
-  // <Login />
-  // <AddIMG />
-  // <ShowPhoto />
+  <Provider store={store}>
+    <App />
+  </Provider>
   ,
   document.getElementById('root')
 );

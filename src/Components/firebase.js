@@ -22,15 +22,11 @@ var firebaseConfig = {
   const storage = firebase.storage();
   const store = firebase.firestore();
   const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-  // const CurrentUser = firebase.auth().currentUser;
-  // const [CurrentUser,setCurrentUser] = useState(null);
 
   export{
     storage , 
     store,
     timestamp , 
-    // CurrentUser,
-    // setCurrentUser,
     firebase as default
   } 
 
