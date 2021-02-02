@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 import AddPhotoHeader from './AddPhotoHeader';
+import Swal from 'sweetalert2';
 const types = ['image/png' , 'image/jpeg'];
 
 
@@ -27,8 +28,9 @@ class AddPhoto extends React.Component {
         const selected = e.target.files?.[0];
         if(selected && types.includes(selected.type)){
             this.setState({frameUrl:'',isUpload:1});
-            let CollectionUrl='';
+            let url='';
             const image = e.target.files[0];
+
             const uploadTask = storage.ref(`Frame/${image.name}`).put(image);
             const collectionRef = store.collection('Frame');
             uploadTask.on('state_changed',
@@ -39,30 +41,38 @@ class AddPhoto extends React.Component {
                 // error function
                 console.log(error);
             },
-             () => {
+            async () => {
                 // complete function
-                storage.ref('Frame').child(image.name).getDownloadURL()
+                await storage.ref('Frame').child(image.name).getDownloadURL()
                 .then((imgUrl) => {
                     console.log(imgUrl);
-                    CollectionUrl = imgUrl;
+                    url = imgUrl;
                     this.setState({frameUrl : imgUrl});
-                    console.log('***->',CollectionUrl);
                     // alert('Image successfully upload...')
                 })
                 const createAt = timestamp();
-                collectionRef.add({ CollectionUrl , createAt }).then(
+                collectionRef.add({ url , createAt }).then(
                     (docRef) => {
                         this.setState({imageId : docRef.id});
-                        console.log('IDDD =>',this.state.imageId,CollectionUrl);
+                        console.log('IDDD =>',this.state.imageId);
                     }
                 );
-                alert('Image successfully upload...')
+                Swal.fire(
+                    'Frame Image upload',
+                    'Your Frame Image successfully upload...',
+                    'success'
+                  );
                 this.setState({isUpload:null});
             });
         }else{
-            alert('Not Supported format...')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Not Supported format...',
+              });
             this.setState({frameUrl:'',isUpload:null});
         }
+        console.log('===> ',this.state.url);
     }
 
     deleteImg = () => {
@@ -78,6 +88,11 @@ class AddPhoto extends React.Component {
             image.delete().then(() => {
                 this.setState({isDelete:null , frameUrl:'',imageId:null});
                 // collectionRef.
+                Swal.fire(
+                    'Frame Image Delete',
+                    'Your Frame Image successfully Delete...',
+                    'success'
+                );
                 console.log('delete');
             }).catch((error) => {
                 console.log(error.message);

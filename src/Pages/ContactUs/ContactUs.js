@@ -2,6 +2,7 @@ import React  from 'react';
 import './ContactUs.css';
 import { Form , Button } from 'react-bootstrap';
 import emailjs from 'emailjs-com';
+import Swal from 'sweetalert2';
 
 const ContactUs = () => {
 
@@ -14,7 +15,12 @@ const ContactUs = () => {
                         process.env.REACT_APP_USER_ID)
           .then((result) => {
               console.log(result.text);
-              alert('Your Mail has been send. Thank you for connecting.');
+              Swal.fire(
+                'Send Message',
+                'Your Mail has been send. Thank you for connecting.',
+                'success'
+              );
+            
           }, (error) => {
               console.log(error.text);
           });

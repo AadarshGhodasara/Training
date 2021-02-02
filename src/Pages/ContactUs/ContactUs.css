@@ -2,6 +2,7 @@
     background-color: #ffffff;
     height: 100vh;
     padding: 2% 5% 2% 5%;
+    font-family: 'Montserrat', sans-serif;
 }
 .ContactUs-header{
     width: 100%;
@@ -17,6 +18,8 @@
 .ContactUs-tag{
     display: flex;
     flex-direction: row;
+    height: 75vh;
+    /* background-color: aqua; */
 }
 .address-tag{
     width: 40%;

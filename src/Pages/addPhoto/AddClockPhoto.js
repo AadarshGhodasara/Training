@@ -7,6 +7,7 @@ import AddIcon from '@material-ui/icons/AddAPhoto';
 import DeleteIcon from '@material-ui/icons/DeleteForeverRounded';
 import history from '../../Components/History';
 import AddPhotoHeader from './AddPhotoHeader';
+import Swal from 'sweetalert2';
 const types = ['image/png' , 'image/jpeg'];
 
 
@@ -58,10 +59,19 @@ class AddPhoto extends React.Component {
                     }
                 );
                 alert('Image successfully upload...')
+                Swal.fire(
+                    'Clock Image upload',
+                    'Your Clock Image successfully upload...',
+                    'success'
+                  );
                 this.setState({isUpload:null});
             });
         }else{
-            alert('Not Supported format...')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Not Supported format...',
+              })
             this.setState({url:'',isUpload:null});
         }
         console.log('===> ',this.state.url);
@@ -82,6 +92,11 @@ class AddPhoto extends React.Component {
             image.delete().then(() => {
                 this.setState({isDelete:null , url:'',imageId:null});
                 // collectionRef.
+                Swal.fire(
+                    'Clock Image Delete',
+                    'Your Clock Image successfully Delete...',
+                    'success'
+                  );
                 console.log('delete');
             }).catch((error) => {
                 console.log(error.message);
@@ -96,7 +111,7 @@ class AddPhoto extends React.Component {
         const {isUpload , isDelete, url} = this.state;
         return(
             <>
-                 <AddPhotoHeader text='Add Clock Photo' clock={true} />  
+                <AddPhotoHeader text='Add Clock Photo' clock={true} />  
                 <div className='addPhoto-body'>
                     <div className='addPhoto-outter-tag'>              
                         <div className='upload-img-tag'>

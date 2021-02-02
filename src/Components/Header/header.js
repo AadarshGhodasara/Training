@@ -3,6 +3,7 @@ import './Header.css';
 import { Navbar , Nav  } from 'react-bootstrap';
 import history from '../History';
 import   fire  from '../Firebase';
+import Swal from 'sweetalert2';
 import { useSelector , useDispatch } from 'react-redux';
 import { setLogout  } from '../action/setLogged';
 const { Brand , Collapse , Toggle } = Navbar;
@@ -48,9 +49,15 @@ function Header() {
     const goLogout = () => {
         fire.auth().signOut().then(() => {
             // Sign-out successful.
-            alert('Sign-out successful...');
-            dispatch(setLogout());
-            history.push({pathname:'/home'});
+            Swal.fire(
+                'Sign-out...',
+                'Successful Sign-out...',
+                'success'
+              ).then(() => {
+                dispatch(setLogout());
+                history.push({pathname:'/home'});
+              });
+
           }).catch((error) => {
             // An error happened.
             console.log(error.message);
@@ -85,7 +92,7 @@ function Header() {
 
                         <Link onSelect={checkExapnd} href="#ContactUs">Contact Us</Link>
                         { isLogin  ? 
-                            <Link onSelect={checkExapnd} onClick={goLogout} href="/home">Logout</Link>                    
+                            <Link onSelect={checkExapnd} onClick={goLogout} href="#">Logout</Link>                    
                         :
                             <Link onSelect={checkExapnd} onClick={goToLogin} href="/login">Login</Link>
                         }

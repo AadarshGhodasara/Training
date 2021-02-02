@@ -59,8 +59,8 @@
     border-radius: 10px;   
 }
 .frameImg-tag{
-    width: 70%;
-    height: 40vh;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
 }
 .btn-tag{
