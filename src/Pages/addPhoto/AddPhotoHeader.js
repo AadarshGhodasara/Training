@@ -4,7 +4,7 @@ import history from '../../Components/History';
 function AddPhotoHeader({ text , clock }) {
     const goback = () => {
         // console.log('back');
-        history.push({pathname:'/'});
+        history.push({pathname:'/home'});
     }
     return(
         <div className={clock ? 'addclockphoto-header-tag' : 'addframephoto-header-tag' }>

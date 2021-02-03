@@ -8,6 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { FormControl , FormLabel } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import {setLogin} from '../../Components/action/setLogged';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [ email , setEmail ] = useState('');
@@ -21,15 +22,31 @@ const Login = () => {
             async function(){
                 const CurrentUser = fire.auth().currentUser;
                 if(CurrentUser.emailVerified === false){
-                    alert('Email Not Verified...');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Email Not Verified...',
+                      })
+                    
                 }else{
-                    alert('Successful Login...');
-                    dispatch(setLogin());   
-                    history.push({pathname:'/home'});
+                    Swal.fire(
+                        'Login',
+                        'Successful Login...',
+                        'success'
+                      ).then(()=>{
+                        dispatch(setLogin());   
+                        history.push({pathname:'/home'});
+                      })
                 }
             }
         )
-        .catch((error) => alert(error.message))
+        .catch((error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message,
+              })
+        })
     }
         
         return(
@@ -68,8 +85,4 @@ const Login = () => {
             </div>
         );
 }
-
-
-
-
 export default Login;
