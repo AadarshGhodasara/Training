@@ -9,6 +9,7 @@
     "bootstrap": "^4.6.0",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.2.3",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-burger-menu": "^3.0.3",
