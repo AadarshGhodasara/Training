@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddPhotoHeader.css';
-import history from '../../Components/History';
+import history from '../../Components/history';
 function AddPhotoHeader({ text , clock }) {
     const goback = () => {
         // console.log('back');
