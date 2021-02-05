@@ -25,7 +25,9 @@ function ShowFrameImages({ text ,styles}) {
                 <div className='frame-img-grid'>
                     { docs && docs.slice(0,numOfImg).map(doc => (
                         <div className='frame-img-wrap' key={doc.id}>
-                            <img src={doc.url} alt='uploaded pic' />
+                            <div className='frame-img-wrap-inner'>
+                                <img src={doc.url} alt='uploaded pic' />
+                            </div>
                         </div>
                 ))}
                 </div>

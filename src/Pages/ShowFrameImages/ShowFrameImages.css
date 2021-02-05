@@ -26,7 +26,7 @@
 /* Grid Outter Tag */
 .frame-img-grid{
     
-    /* background-color: red; */
+    /* background-color: bisque; */
     width: 85%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -37,26 +37,39 @@
 }
 .frame-img-wrap{
     overflow: hidden;
-    padding: 50% 0;
+    padding: 15% 0;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 95%;
-    /* background-color: #0099ff; */
+    border-radius: 5px;
+    /* background: #8E2DE2;  
+    background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2); 
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); */
+
+    background: #4776E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(57deg, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(57deg, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin: 2%;
 }
-
-.frame-img-wrap img {
-    height: 70%;
+.frame-img-wrap-inner{
+    height:30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.frame-img-wrap-inner img {
     min-width: 100%;
     max-width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    background-color: white;
+    height: auto;
+    position: absolute;   
     transition: .5s ease-in-out;
+    padding:4%;    
 }
-.frame-img-wrap img:hover{
-    background-color: #0099ff;
+.frame-img-wrap:hover{
+    background: -webkit-linear-gradient(57deg,#4776E6, #8E54E9);  
+    background: linear-gradient(57deg,#4776E6, #8E54E9 ); 
 }
 .view-more-btn-tag{
     margin-top: 2%;
