@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Provider } from 'react-redux';
 // import isLoaggedReducer from './Components/reducer/isLogged';
 import ReactRefDemo from './Pages/ReactRef/ReactRefDemo';
-
 // const store = createStore(
 //   isLoaggedReducer,
 //   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
