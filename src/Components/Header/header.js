@@ -1,8 +1,8 @@
 import React , { useState  } from 'react';
 import './Header.css';
 import { Navbar , Nav  } from 'react-bootstrap';
-import history from '../History';
-import   fire  from '../Firebase';
+import history from '../history';
+import   fire  from '../firebase';
 import Swal from 'sweetalert2';
 import { useSelector , useDispatch } from 'react-redux';
 import { setLogout  } from '../action/setLogged';

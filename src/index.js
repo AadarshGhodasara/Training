@@ -2,23 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import App from './App';
-// import { createStore } from 'redux';
-// import { Provider } from 'react-redux';
-// import isLoaggedReducer from './Components/reducer/isLogged';
-import ReactRefDemo from './Pages/ReactRef/ReactRefDemo';
-// const store = createStore(
-//   isLoaggedReducer,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-//   );
-
+import App from './App';
   
 
 ReactDOM.render(
-  // <Provider store={store}>
-  //   <App />
-  // </Provider>
-  <ReactRefDemo />
+  <App />
   ,
   document.getElementById('root')
 );

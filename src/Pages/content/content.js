@@ -1,7 +1,7 @@
 import React , {Suspense } from 'react';
 import Loader from '../../Components/Loader/LoaderModal';
-const ShowClockImages = React.lazy(() => import('../ShowClockImages/ShowClockImages'));
-const ShowFrameImages = React.lazy(() => import('../ShowFrameImages/ShowFrameImages'));
+// const ShowClockImages = React.lazy(() => import('../ShowClockImages/ShowClockImages'));
+// const ShowFrameImages = React.lazy(() => import('../ShowFrameImages/ShowFrameImages'));
 const Header = React.lazy(() => import('../../Components/Header/header.js'));
 const Home = React.lazy(() => import('../Home/Home'));
 const AboutOwner = React.lazy(() => import('../AboutOwner/AboutOwner'));

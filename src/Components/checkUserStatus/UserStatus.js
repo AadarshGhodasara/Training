@@ -1,10 +1,10 @@
 import React from 'react';
-import firebase from '../Firebase';
-import history from '../History';
+import firebase from '../firebase';
+import history from '../history';
 import LoaderModal from '../Loader/LoaderModal';
 import { useDispatch , useSelector } from 'react-redux';
 import { setLogin , setLogout} from '../action/setLogged';
-import './CheckUserStatus.css';
+import './checkUserStatus.css';
 
 
 function UserStatus() {
@@ -14,7 +14,7 @@ function UserStatus() {
 
     const CheckUserStatus = () =>{
         firebase.auth().onAuthStateChanged(function(user) {
-            // console.log(user);
+            console.log(user);
             if (user) {
             dispatch(setLogin());
             window.localStorage.setItem('isLoading',isLogin);
