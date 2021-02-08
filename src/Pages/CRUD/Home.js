@@ -9,14 +9,22 @@ export default function Home() {
     },[]);
 
     const loadUser = async () => {
-        const result = await axios.get("http://localhost:3003/users");
-        console.log(result);
-        setUsers(result.data.reverse());
+        try {
+            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/users`);
+            console.log(result);
+            setUsers(result.data.reverse());
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const deleteUser = async id => {
-        await axios.delete(`http://localhost:3003/users/${id}`);
-        loadUser();
+        try {
+            await axios.delete(`${process.env.REACT_APP_API_ENDPOINT}/users/${id}`);
+            loadUser();            
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (

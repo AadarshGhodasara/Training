@@ -14,9 +14,13 @@ const ViewUser = () => {
         loadUser();
     },[]);
     const loadUser = async() => {
-        const result = await axios.get(`http://localhost:3003/users/${id}`);
-        setUser(result.data);
-        console.log(result);
+        try {
+            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/users/${id}`);
+            setUser(result.data);
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
     }
     return(
         <div className='container py-4'>

@@ -14,9 +14,13 @@ export default function Add() {
         setUser({...user,[e.target.name]:e.target.value});
     }
     const onSubmit = async (e) => {
-        e.preventDefault();
-        await axios.post('http://localhost:3003/users',user); 
-        history.push({pathname:'/'});
+        try {
+            e.preventDefault();
+            await axios.post(`${process.env.REACT_APP_API_ENDPOINT}/users`,user); 
+            history.push({pathname:'/'});   
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <div>

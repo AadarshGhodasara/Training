@@ -18,18 +18,26 @@ export default function EditUser() {
     },[]);
 
     const loadUser = async() => {
-        const result = await axios.get(`http://localhost:3003/users/${id}`);
-        setUser(result.data);
-        console.log(result);
+        try {
+            const result = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/users/${id}`);
+            setUser(result.data);
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const onInputChange = (e) => {
         setUser({...user,[e.target.name]:e.target.value});
     }
     const onSubmit = async (e) => {
-        e.preventDefault();
-        await axios.put(`http://localhost:3003/users/${id}`,user); 
-        history.push({pathname:'/'});
+        try {
+            e.preventDefault();
+            await axios.put(`${process.env.REACT_APP_API_ENDPOINT}/users/${id}`,user); 
+            history.push({pathname:'/'});   
+        } catch (error) {
+            console.log(error);
+        }
     }
     return (
         <div>
