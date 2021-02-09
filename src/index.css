@@ -18,3 +18,11 @@ code {
 html {
   scroll-behavior: smooth;
 }
+
+.Not-Found{
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}

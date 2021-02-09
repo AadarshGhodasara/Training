@@ -46,13 +46,20 @@
     left: 0;
     /* border: 2px solid black; */
     border-radius: 10px;
-    background-color: black;
+    /* background-color: black; */
+    background: #009FFF;  
+    background: -webkit-linear-gradient(57deg, #ec2F4B, #009FFF);  
+    background: linear-gradient(57deg, #ec2F4B, #009FFF); 
+
     /* background-color: #404040; */
     /* background-color: white; */
     transition: .5s ease-in-out;
 }
 .img-wrap img:hover{
     background-color: #0099ff;
+    background: -webkit-linear-gradient(57deg, #009FFF, #ec2F4B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(57deg, #009FFF, #ec2F4B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .btn-tag{
     /* background-color: black; */
