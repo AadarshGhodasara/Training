@@ -1,0 +1,15 @@
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-around;
+  margin-top: 25px;
+}
+.selected {
+  color: blue !important;
+}
